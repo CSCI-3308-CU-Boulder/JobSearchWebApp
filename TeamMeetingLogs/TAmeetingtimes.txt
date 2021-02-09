@@ -1,1 +1,9 @@
 2/2/2021 Venkat- Allison, Brady, Abeal. 3:40-4pm
+2/2 Meeting Summary
+
+1. Talked about our potential project ideas. Came to the conclusion that Weather Predictor was a hard topic to integrate an interactive/front-end component.
+2. Include a database component in the project. User logins, save user data.
+3. Next Steps: Pick a project topic, so we can complete the project milestone. Figure out Design/Architecture of the project (i.e. which programming languages we want to use, but more importantly, how we want to structure our website/project.) For a social network, would we want to have friends (only friends can see posts) or followers (everyone can see posts).
+4. Begin deciding which members of the team will do which tasks so we can start researching techniques. Play to strengths, but also build on areas we don’t know much about.
+
+
