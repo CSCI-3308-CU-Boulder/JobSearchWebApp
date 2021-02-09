@@ -1,0 +1,11 @@
+Meeting 3 notes
+
+- The dummy sprint isn’t right, all jira stuff needs to be relevant to our project
+- At the end of the sprint day, mark stuff done
+- Start an actual sprint
+- We'll start a sprint a week from now
+- Do research on stuff we’ll need for the project even though we don’t have the technical skills yet
+	   Ex: a toolbar 
+- During the next project meeting time, put some backlog items in an epic
+- Every US needs an epic
+- Everyone needs a minimum of one US per sprint (or divide accordingly to the hours)
