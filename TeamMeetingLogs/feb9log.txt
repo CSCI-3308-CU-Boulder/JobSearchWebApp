@@ -1,4 +1,5 @@
 Meeting 3 notes
+Team members that attended: Allison, Brady, Isaiah, Zoe, and Abeal 
 
 - The dummy sprint isn’t right, all jira stuff needs to be relevant to our project
 - At the end of the sprint day, mark stuff done
