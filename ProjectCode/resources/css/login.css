@@ -4,13 +4,9 @@ html, body{
     height:100%; /* important to vertically align the container */
     margin:0;
     padding:0;
+    background: #FFFFFA
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  background: #FFFFFA
-}
 
 .loginbox{
   width: 300px;
@@ -26,6 +22,7 @@ body {
   padding: 50px 30px;
   border-right: 3px solid #2D2D34;
   border-bottom: 4px solid #2D2D34;
+  font-family: sans-serif;
 }
 
 .profilePic {
@@ -37,12 +34,17 @@ body {
   left: calc(50% - 50px);
 }
 
-h1{
+.h1, h1 {
+  color: #2D2D34;
   margin: 0;
-  padding: 0 0 20px;
+  padding: 0 0 10px;
   font-size: 30px;
   text-align: center;
+  
 }
+
+
+
 .loginbox p{
   margin: 0;
   padding: 0;
@@ -103,13 +105,12 @@ h1{
 }
 
 
-button {
-  top: 0%;
-  right: 45%;
+button{
   padding: 10px;
   text-anchor: middle;
   height: 40px;
   width: 140px;
+  border-collapse: separate;
   border-radius: 10px;
   position: relative;
   background-color: #738290;
