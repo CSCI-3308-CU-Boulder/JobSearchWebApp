@@ -29,7 +29,7 @@ h1 {
   /* overflow: hidden; */
   background-color: #add8e6;
   font-family: "proxima-nova", sans-serif;
-  align-content: center;
+  align-content: left;
 }
 
 .navbar a {
@@ -41,7 +41,7 @@ h1 {
     text-decoration: none;
 }
 .dropdown {
-    float: center;
+    float: left;
     /* overflow: hidden; */
 }
 
