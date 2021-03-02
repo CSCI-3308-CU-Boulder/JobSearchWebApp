@@ -90,7 +90,7 @@
                             
                              <div class="col">
                                 
-                                 <button class="btn btn-primary btn-block">Save Changes</button>
+                                 <button id="submit" class="btn btn-primary btn-block">Save Changes/ Submit</button>
                                
                              </div>
                                 
@@ -104,7 +104,7 @@
 		
 			<br>
 			<center>
-			<button type="button" class="btn btn-block" onclick="delete_profile()" style="background-color:red; width:150px;">Delete profile</button>
+			<button type="button" id ="delete" class="btn btn-block" onclick="delete_profile()" style="background-color:red; width:150px;">Delete profile</button>
 			</center>
                        </form>
                     
@@ -124,6 +124,107 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script src="../resources/js/my_scripts.js"></script>
+<div class = "container">
+    <button type="button" id="insert" class="btn btn-success">Insert</button>
 
+    <button type="button" id="create" class="btn btn-success">Create Table</button>
+    
+    <button type="button" id="remove" class="btn btn-danger">Delete Table</button>
+    
+    <button type="button" id="list" class="btn btn-success">Fetch Record</button>
+    <br>
+</div>
+<div>
+    
+<hr>
+<h4>Record</h4>
+<table class="table table-bordered table-hover" id="itemlist">
+	
+</table>
+</div>
+<script type="text/javascript">
+    var db=openDatabase("itemDB","1.0","itemDB",65535);
+    $(function(){
+    
+    loadData();
+    
+    
+    $("#create").click(function(){
+    db.transaction(function(transaction){
+        var sql="CREATE TABLE items "+
+        "(name varchar(40) NOT NULL,"+
+        "username VARCHAR(100) NOT NULL,";
+        transaction.executeSql(sql,undefined,function(){
+            alert("Table is created successfully");
+        },function(){
+            alert("Table is already being created");
+        })
+    });
+    });
+    // to remove
+    
+    $("#remove").click(function(){
+    
+    if(!confirm("Are you sure to delete this table?","")) return;;
+    db.transaction(function(transaction){
+        var sql="DROP TABLE items";
+        transaction.executeSql(sql,undefined,function(){
+            alert("Table is deleted successfully")
+        },function(transaction,err){
+            alert(err.message);
+        })
+    });
+    });
+    
+    //to insert
+    
+    $("#insert").click(function(){
+    var item=$("#name").val();
+    var qty=$("#username").val();
+    db.transaction(function(transaction){
+    var sql="INSERT INTO items(name,username) VALUES(?,?)";
+    transaction.executeSql(sql,[item,qty],function(){
+        alert("New item is added successfully");
+    },function(transaction,err){
+        alert(err.message);
+    })
+    })
+    
+    })
+    
+    
+    //to fetch
+    
+    $("#list").click(function(){
+    loadData();
+    })
+    
+    function loadData(){
+            $("#itemlist").children().remove();
+        db.transaction(function(transaction){
+            var sql="SELECT * FROM items";
+            transaction.executeSql(sql,undefined,function(transaction,result){
+    if(result.rows.length){
+    
+    for(var i=0;i<result.rows.length;i++){
+        var row=result.rows.item(i);
+        var item=row.item;
+        var id=row.id;
+        var quantity=row.quantity;
+        $("#itemlist").append('<tr><td>'+id+'</td><td>'+item+'</td><td>'+quantity+'</td></tr>');
+    }
+    }else{
+        $("#itemlist").append('<tr><td colspan="3" align="center">No Item Found</td></tr>');
+    }
+    
+    
+            },function(transaction,err){
+                alert('No table found. Click on "Create Table" to create table now');
+            })
+        })
+    }
+    
+    })
+    </script>
 </body>
 </html>
