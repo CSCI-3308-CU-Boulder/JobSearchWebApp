@@ -1,26 +1,14 @@
 <!DOCTYPE html>
 
 <head>
-  <!-- <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet"> -->
-  <!-- <script src="javascript.js"></script> -->
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+  <script src="javascript.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+  <title>CareerNetwork</title>
   <!-- Bootstrap core css -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   <link href="../resources/css/websiteStylesheet.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
-
-<!-- <style>
-
-body, html {
-  height: 100%;
-  margin: 0;
-  font: 400 15px/1.8 "Lato", sans-serif;
-  color: #777;
-}
-
-</style> -->
 
 </head>
 
@@ -36,7 +24,7 @@ body, html {
       <nav class="navbar">
         <ul class = "navbar-nav">
           <li class = "nav-item">
-            <a class="navbar-brand" href="home.html">Home</a>
+            <a class="navbar-brand" href="home.html"><i class="fa fa-home fa_custom fa-2x"></i> </a>
           </li>
           <li class = "nav-item">
             <a href="feed.html">Feed</a>
@@ -44,23 +32,82 @@ body, html {
           <li class = "nav-item">
             <a href="messages.html">Messaging</a>
           </li>
-          <li class = "nav-item">
+          <!-- <li class = "nav-item">
             <a href="settings.html">Settings</a>
-          </li>
+          </li> -->
+          
         </ul>
       </nav>
+      <br>
+      <div class="container-fluid">
+        <form class="d-flex input-group w-auto">
+          <input
+            type="search"
+            class="form-control"
+            placeholder="Search Site"
+            aria-label="Search"
+          />
+          <button
+            class="btn btn-outline-primary"
+            type="button"
+            data-mdb-ripple-color="dark"
+          >
+            Search
+          </button>
+        </form>
+      </div>
     </div>
 
 
 
     <!-- BODY -->
-  <div class = "col-6">
+  <div class = "col-8">
       Welcome to the CareerNetwork website! Here you can search for jobs and also make networking connections.
     <div class="card w-80">
+      
       <div class="card-body">
+        <h3 class = "card-title">My Feed</h3>
+        <div class="forumDivOuter" style>
+          <div id="forumDiv">
+            <textarea class="autoExpand forumPost form-control" rows="4" data-min-rows="4" placeholder="Create a post"></textarea>
+            <br>
+            <button class="forumPostButton btn btn-default btn-outline-primary">Post</button>
+          </div>
+        </div>
+        <br>
         <p>Test Text.</p>
+
+      </div> <!-- End card body-->
+      <!-- <img class="rounded-circle mx-auto" src="" alt="Card image" style="width:500px; height:500px;"> -->
+    </div> <!-- End card-->
+    <br>
+    <h3>Recommended jobs for you</h3>
+    <div class="card-group">
+      <div class="card">
+        <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS60myXwH91ZjGX7w-2z2TFlsiGxBXhpIdOsg&usqp=CAU" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">News</h5>
+          <p class="card-text">some workds</p>
+
+        </div>
       </div>
-      <img class="rounded-circle mx-auto" src="../Personal_Website/img/bio-photo1.jpg" alt="Card image" style="width:500px; height:500px;">
+      
+      <div class="card">
+        <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrtbha31p_09caU4Ent34syDVs9cOGxA6GDg&usqp=CAU" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">News</h5>
+          <p class="card-text">some more text.</p>
+
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKbgHviEX51Vd13IH9LAoToaMC9cKfhIsElw&usqp=CAU" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">News</h5>
+          <p class="card-text">more text!</p>
+
+        </div>
+      </div>
     </div>
     <br>
     <h3>News</h3>
@@ -93,12 +140,7 @@ body, html {
     </div> <!-- End card class-->
   </div> <!-- End div col for body-->
   <!-- Right nav bar -->
-    <!-- 
-    <li class="nav-item"><a class="nav-link" href="https://github.com/"><i class="fa fa-github fa_custom fa-2x"></i></a> </li>
-              <li class="nav-item"><a class="nav-link" href="profile.html"><i class="fa fa-user fa_custom fa-2x"></i></a> </li>
-              <li class="nav-item dropdown"> -->
-
-      <div class = "col-4">
+      <div class = "col-2">
         <nav class="navbar navbar-expand-sm">
           
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -116,41 +158,21 @@ body, html {
                   <i class="fa fa-user fa_custom fa-2x"></i>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="login.html">Log in</a>
                   <a class="dropdown-item" href="profile.html">Profile</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="settings.html">Settings</a>
+                  <a class="dropdown-item" href="#">Log out</a>
+                  
                 </div>
               </li>
             </ul>
-            <!-- <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-            </form> -->
-          </div>
-        </nav>
 
-        <nav class="navbar navbar-light bg-light">
-          <div class="container-fluid">
-            <form class="d-flex input-group w-auto">
-              <input
-                type="search"
-                class="form-control"
-                placeholder="Type query"
-                aria-label="Search"
-              />
-              <button
-                class="btn btn-outline-primary"
-                type="button"
-                data-mdb-ripple-color="dark"
-              >
-                Search
-              </button>
             </form>
           </div>
         </nav>
-      </div>
-    
 
+      </div>
   </div> <!-- End div row-->
   
   
