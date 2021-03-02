@@ -1,0 +1,1 @@
+Discussed website requirements for meeting on friday. To dos: create tables for database and demonstrate preliminary website html/css/javascript features created. Didn't really do much this meeting, just checked in.

@@ -4,7 +4,11 @@ body {
  font-weight: 100;
  font-style: normal;
 
-  background-color: #FBFBF2
+  background-color: #FFFFFA
+}
+.darkMode{
+  background-color: #2D2D34;
+  color: #FFFFFA; 
 }
 
 .fishlogo {
@@ -17,7 +21,7 @@ body {
 }
 
 h1 {
-  color: #747F7B;
+  color: #738290;
   text-align: center;
   font-size: 36px;
   font-weight: 60;
@@ -27,15 +31,16 @@ h1 {
 
 .navbar{
   /* overflow: hidden; */
-  background-color: #add8e6;
+  background-color: #2D2D34;
   font-family: "proxima-nova", sans-serif;
   align-content: left;
+  border-radius: 4px;
 }
 
 .navbar a {
     float: left;
     font-size: 16px;
-    color: #685D52;
+    color: #EB5E28;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -49,16 +54,16 @@ h1 {
     font-size: 16px;
     border: none;
     outline: none;
-    color: #685D52;
+    color: #FFFFFA;
     /* padding: 5px 5px; */
-    background-color: #add8e6;
+    background-color: #738290;
     font-family:"proxima-nova", sans-serif;
     margin: 0;
     font-weight: lighter;
 }
 
 .navbar a:hover, .dropdown:hover .dropbtn {
-    background-color: #EDEDE3;
+    background-color: #FFFFFA;
 }
 
 .dropdown-content {
@@ -72,7 +77,7 @@ h1 {
 
 .dropdown-content a {
     float: none;
-    color: #929487;
+    color: #738290;
     padding: 0px 0px;
     text-decoration: none;
     /* display: block; */
@@ -88,16 +93,16 @@ h1 {
 }
 
 .tablink {
-  color: #6B6054;
+  color: #738290;
 }
 
 
 .link {
-  color: #929487;
+  color: #738290;
 }
 
 .text {
-  color: #747F7B;
+  color: #738290;
 }
 
 #headshot {
@@ -126,3 +131,11 @@ ul {
 }
 .grow { transition: all .2s ease-in-out; }
 .grow:hover { transform: scale(1.4); }
+
+.card-color {
+  background-color: #738290
+}
+
+.btn-outline-primary{
+  color: black
+}

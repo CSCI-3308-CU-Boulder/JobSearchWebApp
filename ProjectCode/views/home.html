@@ -9,9 +9,9 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   <link href="../resources/css/websiteStylesheet.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <script defer src="..\resources\js\home.js"></script>
 
 </head>
-
 <body>
   <h1>
     <br>
@@ -56,6 +56,9 @@
           </button>
         </form>
       </div>
+
+      <br>
+      <button type="button" id="darkMode" onclick="darkMode()">Dark Mode</button>
     </div>
 
 
@@ -63,15 +66,15 @@
     <!-- BODY -->
   <div class = "col-8">
       Welcome to the CareerNetwork website! Here you can search for jobs and also make networking connections.
-    <div class="card w-80">
-      
+    <br>
+    <div class="card w-80 card-color">
       <div class="card-body">
         <h3 class = "card-title">My Feed</h3>
         <div class="forumDivOuter" style>
           <div id="forumDiv">
             <textarea class="autoExpand forumPost form-control" rows="4" data-min-rows="4" placeholder="Create a post"></textarea>
             <br>
-            <button class="forumPostButton btn btn-default btn-outline-primary">Post</button>
+            <button class="forumPostButton btn btn-default btn-outline-primary" id="darkMode">Post</button>
           </div>
         </div>
         <br>
@@ -82,17 +85,17 @@
     </div> <!-- End card-->
     <br>
     <h3>Recommended jobs for you</h3>
-    <div class="card-group">
-      <div class="card">
+    <div class="card-group card-color">
+      <div class="card card-color">
         <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS60myXwH91ZjGX7w-2z2TFlsiGxBXhpIdOsg&usqp=CAU" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">News</h5>
-          <p class="card-text">some workds</p>
+          <p class="card-text">some works</p>
 
         </div>
       </div>
       
-      <div class="card">
+      <div class="card card-color">
         <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrtbha31p_09caU4Ent34syDVs9cOGxA6GDg&usqp=CAU" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">News</h5>
@@ -100,7 +103,7 @@
 
         </div>
       </div>
-      <div class="card">
+      <div class="card card-color">
         <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKbgHviEX51Vd13IH9LAoToaMC9cKfhIsElw&usqp=CAU" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">News</h5>
@@ -111,17 +114,17 @@
     </div>
     <br>
     <h3>News</h3>
-    <div class="card-group">
-      <div class="card">
+    <div class="card-group card-color">
+      <div class="card card-color">
         <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS60myXwH91ZjGX7w-2z2TFlsiGxBXhpIdOsg&usqp=CAU" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">News</h5>
-          <p class="card-text">some workds</p>
+          <p class="card-text">some works</p>
 
         </div>
       </div>
       
-      <div class="card">
+      <div class="card card-color">
         <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrtbha31p_09caU4Ent34syDVs9cOGxA6GDg&usqp=CAU" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">News</h5>
@@ -129,7 +132,7 @@
 
         </div>
       </div>
-      <div class="card">
+      <div class="card card-color">
         <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKbgHviEX51Vd13IH9LAoToaMC9cKfhIsElw&usqp=CAU" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">News</h5>
