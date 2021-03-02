@@ -7,7 +7,7 @@ function submitLogin(){
         alert('Input Username/Password!');
         return;
     }
-    window.location.href = "settings.html";
+    window.location.href = "home.html";
 }
 
 function darkMode(){
