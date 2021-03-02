@@ -12,7 +12,7 @@ docker exec -it [containerID] bash
 psql -h localhost -U postgre
 
 #now we're in postgres, creating a database
-create database profiled;
+create database profiledb;
 
 #to enter the postgres table
 \c profiledb;
