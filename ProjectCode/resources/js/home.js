@@ -1,4 +1,4 @@
 function darkMode(){
-    var color = document.body;
-    color.classList.toggle("darkMode");
+    var bg_color = document.body;
+    bg_color.classList.toggle("dark-mode");
 }

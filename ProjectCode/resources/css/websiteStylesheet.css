@@ -3,12 +3,21 @@ body {
  font-family: "proxima-nova", sans-serif;
  font-weight: 100;
  font-style: normal;
-
-  background-color: #FFFFFA
+ background-color: #FFFFFA;
 }
-.darkMode{
+.dark-mode{
   background-color: #2D2D34;
-  color: #FFFFFA; 
+  color: #FFFFFA;
+}
+
+.card-color{
+  /* background-color: #FFFFFA; */
+  background-color: #D5D5D5;
+  color: #2D2D34
+}
+
+.btn-outline-primary{
+  color: black;
 }
 
 .fishlogo {
@@ -17,7 +26,6 @@ body {
   height: 110px;
   margin: 0;
   text-align: left;
-
 }
 
 h1 {
@@ -30,11 +38,15 @@ h1 {
 }
 
 .navbar{
-  /* overflow: hidden; */
+  overflow: hidden;
   background-color: #2D2D34;
   font-family: "proxima-nova", sans-serif;
   align-content: left;
   border-radius: 4px;
+}
+
+.nav-custom{
+  overflow:visible
 }
 
 .navbar a {
@@ -132,10 +144,13 @@ ul {
 .grow { transition: all .2s ease-in-out; }
 .grow:hover { transform: scale(1.4); }
 
-.card-color {
-  background-color: #738290
-}
-
-.btn-outline-primary{
-  color: black
+button{
+  padding: 5px;
+  text-anchor: middle;
+  height: 40px;
+  width: 100px;
+  border-collapse: separate;
+  border-radius: 4px;
+  position: relative;
+  background-color: #738290;
 }
