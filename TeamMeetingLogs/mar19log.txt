@@ -1,0 +1,5 @@
+Team members: Abeal, Brady, Kasper, and Zoe
+
+The TA stressed the importance of getting comfortable with Javascript
+We need to implement Javascript for all our pages
+Then Brady will do back-end stuff, but front end people also need to chip in
