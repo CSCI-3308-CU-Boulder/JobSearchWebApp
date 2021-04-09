@@ -1,0 +1,156 @@
+
+body {
+ font-family: "proxima-nova", sans-serif;
+ font-weight: 100;
+ font-style: normal;
+ background-color: #FFFFFA;
+}
+.dark-mode{
+  background-color: #2D2D34;
+  color: #FFFFFA;
+}
+
+.card-color{
+  /* background-color: #FFFFFA; */
+  background-color: #D5D5D5;
+  color: #2D2D34
+}
+
+.btn-outline-primary{
+  color: black;
+}
+
+.fishlogo {
+  float: left;
+  width: 110px;
+  height: 110px;
+  margin: 0;
+  text-align: left;
+}
+
+h1 {
+  color: #738290;
+  text-align: center;
+  font-size: 36px;
+  font-weight: 60;
+  padding: 1px 1px;
+  font-weight: bold;
+}
+
+.navbar{
+  overflow: hidden;
+  background-color: #2D2D34;
+  font-family: "proxima-nova", sans-serif;
+  align-content: left;
+  border-radius: 4px;
+}
+
+.nav-custom{
+  overflow:visible
+}
+
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: #EB5E28;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.dropdown {
+    float: left;
+    /* overflow: hidden; */
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: #FFFFFA;
+    /* padding: 5px 5px; */
+    background-color: #738290;
+    font-family:"proxima-nova", sans-serif;
+    margin: 0;
+    font-weight: lighter;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: #FFFFFA;
+}
+
+.dropdown-content {
+    display: none;
+    position: static;
+    background-color: #f9f9f9;
+    /* min-width: 10px; */
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: #738290;
+    padding: 0px 0px;
+    text-decoration: none;
+    /* display: block; */
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #E5E6E4;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.tablink {
+  color: #738290;
+}
+
+
+.link {
+  color: #738290;
+}
+
+.text {
+  color: #738290;
+}
+
+#headshot {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ul {
+  list-style-type: square;
+}
+
+.navbar a {
+  font-size: 15px;
+  padding-left: 15px;
+  float: center;
+}
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #add8e6;
+   color: white;
+   text-align: center;
+}
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.4); }
+
+button{
+  padding: 5px;
+  text-anchor: middle;
+  height: 40px;
+  width: 100px;
+  border-collapse: separate;
+  border-radius: 4px;
+  position: relative;
+  background-color: #738290;
+}
