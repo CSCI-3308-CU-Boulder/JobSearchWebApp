@@ -1,5 +1,3 @@
-# 3308SP21_015_5
-
 <h1>Career Network</h1>
 
 <h2>Team Members</h2>
