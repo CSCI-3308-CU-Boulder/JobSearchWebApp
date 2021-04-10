@@ -9,14 +9,14 @@
         <link rel='icon' href='../resources/img/favicon.ico' type='image/x-icon'/>
     <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-        <link href="../resources/css/my_style.css" rel="stylesheet">
+	<link href="..\resources\css\settings.css" rel="stylesheet">
 </head>
 
 <body>
 <nav class="navbar" style="background-color: #add8e6;">
 	<ul class="navbar-nav mr-auto">
 	<li class="nav-item active">
-	<a class="nav-link" href="home.html" style="color:#989898;">Done<span class="sr-only">(current)</span></a>
+	<a class="nav-link" href="home.html" style="color: black">Done<span class="sr-only">(current)</span></a>
 	</li>
 </nav>
 <div style="padding:15px;">
@@ -28,9 +28,9 @@
                 <div class="col-md-3">
                 
                     <div>
-			<img src="../resources/img/profile.jpg" height="300px" width="300px" id="picture">
+			<img src="../resources/img/profile.jpg" alt="Avatar" style="border-radius: 50%;" height="300px" width="300px" id="picture">
 			<br>
-			<input type="file" id="input">
+			<button type="button" id="darkMode" onclick="darkMode()">Dark Mode</button>
 		    </div>
                 </div>
                 
@@ -43,45 +43,53 @@
                          <div class="form-group">
 
                              <label>Name</label>
-                             <input class="form-control" id="name">
+                             <input class="form-control" id="name" placeholder="Name">
 
                          </div>
                          <div class="form-group">
 
-                             <label>Year</label>
-                             <input class="form-control" id="year">
+                             <label>Major</label>
+                             <input class="form-control" id="major" placeholder="Major">
 
                          </div>
                          <div class="form-group">
 
                              <label>GPA</label>
-                             <input class="form-control" id="gpa">
+                             <input class="form-control" id="gpa" placeholder="GPA">
 
                          </div>
 
 			 <div class="form-group">
 
-                             <label>Major</label>
-                             <input class="form-control" id="major">
+                             <label>University</label>
+                             <input class="form-control" id="uni" placeholder="University">
 
                          </div>
                          <div class="form-group">
 
-                            <label>Pronouns</label>
-                            <input class="form-control" id="pronouns">
+                            <label>Username</label>
+                            <input class="form-control" id="username" placeholder="Username">
 
                         </div>
-			 <div class="form-group">
 
-                             <label>Resume</label>
-			     <br>
-			     <input type="file" id="resume">
+			<div class="form-group">
+
+                            <label>Password</label>
+                            <input class="form-control" id="password" placeholder="Password">
+
+                        </div>
+
+			<div class="form-group">
+
+                             <label>Skills</label>
+                             <input class="form-control" id="skills" style="height:100px;" placeholder="Skills">
+
                          </div>
 
 			 <div class="form-group">
 
                              <label>Experience</label>
-                             <input class="form-control" id="experience" style="height:200px;">
+                             <input class="form-control" id="experience" style="height:200px;" placeholder="Experience">
 
                          </div>
                             
@@ -89,13 +97,13 @@
                             
                              <div class="col">
                                 
-                                 <button id="submit" class="btn btn-primary btn-block">Save Changes/ Submit</button>
+                                 <button id="submit" class="btn btn-primary btn-block" onclick="save_profile()">Save Changes</button>
                                
                              </div>
                                 
                              <div class="col">
                                 
-                                 <button class="btn btn-default btn-block" style="background-color:#989898;">Cancel</button>
+                                 <button class="btn btn-default btn-block" onclick="cancel()" style="background-color:#989898;">Cancel</button>
                                 
                              </div>
                             
