@@ -1,8 +1,20 @@
-//Javascript functions here
+Javascript functions here
 
-function getFile()
+function cancel()
 {
-      document.getElementById("fileInput").click();
+	reload();
+}
+
+function save_profile()
+{
+	name = document.getElementById("name");
+	major = document.getElementById("major");
+	gpa = document.getElementById("gpa");
+	uni = document.getElementById("uni");
+	experience = document.getElementById("experience");
+	skills = document.getElementById("skills");
+	username = document.getElementById("username");
+	password = document.getElementById("password");
 }
 
 function delete_profile()
