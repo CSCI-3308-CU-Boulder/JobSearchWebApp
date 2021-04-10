@@ -1,0 +1,117 @@
+
+/* This css was created by Bootstrap for their login page example */
+html, body{
+    height:100%; /* important to vertically align the container */
+    margin:0;
+    padding:0;
+    background: #FFFFFA
+}
+
+
+.loginbox{
+  width: 300px;
+  height: 400px;
+  background: #738290;
+  border-radius: 8px;
+  color: #2D2D34;
+  top: 50%;
+  left: 50%;
+  position: relative;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 50px 30px;
+  border-right: 3px solid #2D2D34;
+  border-bottom: 4px solid #2D2D34;
+  font-family: sans-serif;
+}
+
+.profilePic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+  top: -50px;
+  left: calc(50% - 50px);
+}
+
+.h1, h1 {
+  color: #2D2D34;
+  margin: 0;
+  padding: 0 0 10px;
+  font-size: 30px;
+  text-align: center;
+  
+}
+
+
+
+.loginbox p{
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+
+}
+
+.loginbox input{
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.loginbox input[type="text"], input[type="password"]{
+  border: none;
+  border-bottom: 1px solid #2D2D34;
+  background-color: #FFFFFA;
+  border-radius: 5px;
+  height: 35px;
+  color: #2D2D34;
+  font-size: 16px;
+
+}
+
+.loginbox input[name="submit"]{
+  border: none;
+  outline: none;
+  text-align: center;
+  height: 40px;
+  background: #e48400;
+  color: #FFFFFA;
+  border-right: 1px solid #EB5E28;
+  border-bottom: 2px solid #EB5E28;
+  border-radius: 20px;
+}
+
+.loginbox input[name="submit"]:hover{
+  cursor: pointer;
+  background: #EB5E28;
+  color: #2D2D34;
+  border-right: 3px solid #e48400;
+  border-bottom: 4px solid #e48400;
+}
+
+.loginbox a{
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 20px;
+  color: #2D2D34;
+}
+
+.loginbox a:hover{
+  color: #EB5E28;
+}
+
+.darkMode {
+  background-color: #2D2D34;
+  color: #FFFFFA;
+}
+
+
+button{
+  padding: 10px;
+  text-anchor: middle;
+  height: 40px;
+  width: 140px;
+  border-collapse: separate;
+  border-radius: 10px;
+  position: relative;
+  background-color: #738290;
+}

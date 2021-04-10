@@ -1,0 +1,160 @@
+<%- include('../partials/header') %>
+<%- include('../partials/menu') %>
+	<div class="container">
+		<br>
+		<div class="row">
+			<div class="col-4">
+				<div class="card">
+				<!-- TODO: Modify the ejs code below, to conditionally set the image_src to be from our chosen player -->
+				  <%
+				  var image_src = '../resources/img/helmet.jpg';
+
+				  %>
+				 <img class="card-img-top" id="player_img" src= "<%- image_src %>" alt="Image of Football Player">
+				  <div class="card-body mx-auto">
+					<form class="form"action="/player_info/player" method="get">
+						<select class="custom-select" name="player_choice" onchange="this.form.submit()">
+							 <option selected>Select Player</option>
+							 <!-- TODO: Populate our select with player options
+							 			For each player, set a new option with a value matching the palyer's id,
+							 			but will display the player's name-->
+						</select>
+					</form>
+				  </div>
+				</div>
+			</div>
+			<div class="col-8">
+				<div class="table-responsive">
+					<table class="table">
+						<tr>
+							<!-- TODO: Set Player Information
+							 			If a player has been selected, fill in their information in each of the fields below.
+							 		    You'll need to calculate here the player's average rushing, receiving, and passing yards.-->
+							<th>Year</th>
+							<td>	</td>
+						</tr>
+						<tr>
+							<th>Major</th>
+							<td>	</td>
+						</tr>
+						<tr>
+							<th>Games Played</th>
+							<td>	</td>
+						</tr>
+						<tr>
+							<td>Passing Yards: </td>
+							<td>Avg. Passing Yards: </td>
+						</tr>
+						<tr>
+							<td>Rushing Yards: </td>
+							<td>Avg. Rushing Yards: </td>
+						</tr>
+						<tr>
+							<td>Receiving Yards: </td>
+							<td>Avg. Receiving Yards: </td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<!-- The forms for adding and removing a game are defined below.
+				 You should no have to make any changes to this section.
+		-->
+		<div class="row" >
+			<div class="col-4">	</div>
+			<div class="col-8">
+					<!-- select a form type  -->
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label" for="formtype">Data Input</label>
+							<div class="col-sm-10">
+								<select name="formtype" id="formtype_select" class="custom-select custom-select" onchange="switchPlayerForm(this, 'playerinfo_form')">
+									<option value="0" selected>Add Data</option>
+									<option value="1">Add a Player</option>
+									<option value="2">Add a Game</option>
+								</select>
+							</div>
+					</div>
+					<!-- form for adding a player  -->
+					<form action="/player_info/add_player" method="post" id="playerinfo_form-1" style="visibility: hidden; height: 0">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label"  for="playerName">Player Name</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" name="player_name" id="playerName" placeholder="Enter Player Name">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label"  for="playerYear">Player Year</label>
+							<div class="col-sm-10">
+								<select class="form-control" name="player_year"  id="playerYear">
+						      <option value="FSH">Freshman</option>
+						      <option value="SPH">Sophomore</option>
+						      <option value="JNR">Junior</option>
+						      <option value="SNR">Senior</option>
+						    </select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label"  for="playerMajor">Player Major</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" name="player_major" id="playerMajor" placeholder="The unique 4 character CU code (ex. CSCI, ATLS)" required pattern="[A-Z]{4}">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label"  for="playerPassingYards">Passing Yards</label>
+							<div class="col-sm-10">
+								<input type="number" class="form-control" name="player_passing_yards" id="playerPassingYards" placeholder="Enter Player Passing Yards"  min="0">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label"  for="playerRushingYards">Rushing Yards</label>
+							<div class="col-sm-10">
+								<input type="number" class="form-control" name="player_rushing_yards" id="playerRushingYards" placeholder="Enter Player Rushing Yards"  min="0">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label"  for="playerReceivingYards">Receiving Yards</label>
+							<div class="col-sm-10">
+								<input type="number" class="form-control" name="player_receiving_yards" id="playerReceivingYards" placeholder="Enter Player Receiving Yards"  min="0">
+							</div>
+						</div>
+						<input type="submit" value="submit" class="btn btn-primary btn-block">
+					</form>
+					<!-- form for adding a game  -->
+				<form action="/player_info/add_game" method="post" id="playerinfo_form-2" style="visibility: hidden; height: 0">
+					<div class="form-group row">
+						<label  class="col-sm-2 col-form-label" for="visitorName">Visitor Name</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="visitorName" name="visitor_name" placeholder="Enter Visitor Name">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label  class="col-sm-2 col-form-label" for="home_score">Home Score</label>
+						<div class="col-sm-10">
+							<input type="number" class="form-control" id="home_score" name="home_score" placeholder="Enter Home Score" min="0">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label  class="col-sm-2 col-form-label" for="visitor_score">Visitor Score</label>
+						<div class="col-sm-10">
+							<input type="number" class="form-control" id="visitor_score" name="visitor_score" placeholder="Enter Visitor Score" min="0">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label  class="col-sm-2 col-form-label" for="game_date">Game Date</label>
+						<div class="col-sm-10">
+							<input type="date" class="form-control" id="game_date" name="game_date" placeholder="Game Date">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label  class="col-sm-2 col-form-label" for="players">Players</label>
+						<div class="col-sm-10">
+							<input type="list" class="form-control" id="players" name="players" placeholder="Enter Players (ex. {0,1,2})" required pattern="\{(\d+,)*\d+\}">
+						</div>
+					</div>
+					<input type="submit" value="submit" class="btn btn-primary btn-block">
+				</form>
+			</div>
+		</div>
+	</div>
+
+<%- include('../partials/footer') %>
