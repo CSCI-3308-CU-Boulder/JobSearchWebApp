@@ -6,9 +6,10 @@ CREATE TABLE IF NOT EXISTS PROFILE (
   major VARCHAR(30),
   gpa INT,       
   year  VARCHAR(30),
-  pronouns  VARCHAR(30),
+  pronouns VARCHAR(30),
+  experience VARCHAR(500),
   PRIMARY KEY(username) /* A game's unique primary key consists of the visitor_name & the game date (this assumes you can't have multiple games against the same team in a single day) */
 );
 
-INSERT INTO profile(full_name, username, password_, major, gpa, year, pronouns)
-VALUES('Abeal Sileshi', "abealsileshi", "password_", "CS", 4.0, "senior" , "he/him/his");
+INSERT INTO profile(full_name, username, password_, major, gpa, year, pronouns, experience)
+VALUES('Abeal Sileshi', "abealsileshi", "fakepassword", "CS", 4.0, "senior" , "he/him/his", "I have minimal experience.");
