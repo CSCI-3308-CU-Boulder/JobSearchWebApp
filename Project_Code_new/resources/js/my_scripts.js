@@ -1,5 +1,3 @@
-Javascript functions here
-
 function cancel()
 {
 	reload();
@@ -27,15 +25,8 @@ function delete_profile()
 	}
 }
 
-/*function update_picture()
-{
-	var file = document.getElementById("input")
-	var pic = document.getElementById("picture")
+function darkMode(){
+	var color = document.body;
+	color.classList.toggle("darkMode");
+}
 
-	var reader = new FileReader();
-  	reader.onload = function()
-	{
-     		pic.src = this.result;
-  	}
-	reader.readAsDataURL(file);
-}*/
