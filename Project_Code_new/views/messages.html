@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <head>
-
+<title>Messages</title>
 <link rel="stylesheet" href="websiteStylesheet.css">
 <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
 <script src="profile.js"></script>
@@ -9,10 +9,12 @@
 <!-- Bootstrap core css -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <link href="../resources/css/websiteStylesheet.css" rel="stylesheet">
+<link href="../resources/css/websiteStylesheet.css" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<script defer src="..\resources\js\messages.js"></script>
+<script defer src="..\resources\js\home.js"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<h1>Messages</h1>
 <nav class="navbar navbar-expand-sm">
   <ul class = "navbar-nav">
     <li class = "nav-item">
@@ -90,10 +92,29 @@ body {
   float: left;
   color: #999;
 }
+
+.button {
+  background-color: #555555;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
 </style>
 </head>
 
 <body>
+<br>
+<input type="button" class="button" id="newMessage" onclick="newMessage()" value="New Message">
+<input type="button" class="button" id="newMessage" onclick="darkMode()" value="Dark Mode">
+<br>
+
 
 <div class="container darker">
   <img src="../resources/img/profile.jpg" alt="Avatar" style="width:100%;">
