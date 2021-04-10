@@ -1,8 +1,13 @@
-//Javascript functions here
+//Javascript functions here 
 
 function getFile()
 {
       document.getElementById("fileInput").click();
+}
+
+function save()
+{
+	
 }
 
 function delete_profile()
