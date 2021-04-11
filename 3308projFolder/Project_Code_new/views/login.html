@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Login to your PLACEHOLDERTITLE account">
+    <title>Login Page</title>
+	<script defer src="..\resources\js\login.js"></script>
+
+    <link href="..\resources\css\login.css" rel="stylesheet">
+
+
+</head>
+  <body class="center text-center" id="centerbody">
+    <button type="button" id="darkMode" onclick="darkMode()" >Dark Mode</button>
+	<div class="loginbox">
+		<img src="../resources/img/profile.jpg" class="profilePic" alt="Placeholder profile picture">
+		<h1>Login or Create an Account</h1>
+		<form id="login">
+			<p>Username</p>
+			<input id="username" type="text" name="username" placeholder="Enter Username" >
+			<p>Password</p>
+			<input id="password" type="password" name="password" placeholder="Enter Password">
+			<input id="submit" name="submit" value="Login" onclick="submitLogin()">
+			<a href="#">Forgot username/password?</a><br>
+			<!-- <a href="#">Create an account</a> -->
+			<a class="btn btn-lg btn-primary" href="register.html">Create an Account</a>
+		</form>
+
+	</div>
+	
+
+
+
+
+	</body>
+</html>
