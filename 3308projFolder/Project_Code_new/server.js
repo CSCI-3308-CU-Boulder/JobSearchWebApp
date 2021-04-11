@@ -114,6 +114,12 @@ app.get('/settings', function(req, res) {
 	});
 });
 
+//email index page
+app.get('/index', function(req, res) {
+	res.render('pages/index',{
+		my_title:"Email Page"
+	});
+});
 
 /*Add your other get/post request handlers below here: */
 
