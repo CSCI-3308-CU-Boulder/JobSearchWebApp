@@ -23,7 +23,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: pwd
-      POSTGRES_DB: football_db
+      POSTGRES_DB: profile_db
     expose:
       - "5432"                                  # We need only expose port `5432` internally to node (not the host)
     volumes:

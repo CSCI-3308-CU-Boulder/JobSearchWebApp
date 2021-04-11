@@ -30,7 +30,7 @@ var pgp = require('pg-promise')();
 const dbConfig = {
 	host: 'db',
 	port: 5432,
-	database: 'football_db',
+	database: 'profile_db',
 	user: 'postgres',
 	password: 'pwd'
 };
