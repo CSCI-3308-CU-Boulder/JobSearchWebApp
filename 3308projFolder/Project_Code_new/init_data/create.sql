@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS profile;
-CREATE TABLE IF NOT EXISTS profile (
+DROP TABLE IF EXISTS user_table;
+CREATE TABLE IF NOT EXISTS user_table (
   full_name VARCHAR(30),    
   username VARCHAR(30) NOT NULL,  
   password_ VARCHAR(30) NOT NULL,
@@ -13,5 +13,5 @@ CREATE TABLE IF NOT EXISTS profile (
 
 
 
-INSERT INTO profile(full_name, username, password_, major, gpa, year, pronouns, experience)
+INSERT INTO user_table(full_name, username, password_, major, gpa, year, pronouns, experience)
 VALUES('Abeal Sileshi', 'abealsileshi', 'fakepassword', 'CS', 4.00, 'senior' , 'he/him/his', 'I have minimal experience.'); 

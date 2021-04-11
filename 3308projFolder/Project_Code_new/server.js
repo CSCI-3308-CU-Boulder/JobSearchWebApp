@@ -122,7 +122,36 @@ app.get('/index', function(req, res) {
 });
 
 /*Add your other get/post request handlers below here: */
+app.get('/register/add_user', function(req, res) {
+	var color_choice = req.query.color_selection; // Investigate why the parameter is named "color_selection"
+	var color_options =  'select * from profile;';// Write a SQL query to retrieve the colors from the database
+	var color_message = 'select color_msg from favorite_colors where hex_value=\''+color_choice+'\';';  // Write a SQL query to retrieve the color message for the selected color
+	console.log("This is req inside of /home/pick_color", req, "This is res", res);
+	db.task('get-everything', task => {
+        return task.batch([
+            task.any(color_options),
+            task.any(color_message)
+        ]);
+    })
+    .then(info => {
+    	res.render('pages/home',{
+				my_title: "Home Page",
+				data: info[0], // Return the color options
+				color: color_choice, // Return the color choice
+				color_msg: info[1][0].color_msg// Return the color message
+			})
+    })
+    .catch(err => {
+            console.log('error', err);
+            res.render('pages/home', {
+                my_title: 'Home Page',
+                data: '',
+                color: '',
+                color_msg: ''
+            })
+    });
 
+});
 
 app.post('/register/add_user',function(req,res){
 	// {
