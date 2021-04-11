@@ -87,8 +87,8 @@ app.use(express.static(__dirname + '/'));//This line is necessary for us to use 
 
 // login page
 app.get('/', function(req, res) {
-	res.render('pages/login',{
-		local_css:"signin.css",
+	res.render('register',{
+		local_css:"login.css",
 		my_title:"Login Page"
 	});
 });
