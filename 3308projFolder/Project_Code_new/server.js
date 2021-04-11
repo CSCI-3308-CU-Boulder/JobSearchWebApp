@@ -117,6 +117,59 @@ app.get('/settings', function(req, res) {
 
 /*Add your other get/post request handlers below here: */
 
+
+app.post('/register/add_user',function(req,res){
+	// {
+	// 	player_name:"Text Value",
+	// 	player_year: "Year",
+	// 	player_major: "major",
+	// 	player_passing_yards : 10,
+	// 	player_rushing_yards : 10,
+	//  player_receiving_yards : 10
+	// }
+	var full_name = req.body.full_name;
+	var user_name = req.body.user_name;
+	var password_ = req.body.password_;
+	var major_ = req.body.major_;
+	var year_ = req.body.year_;
+	var gpa_ = req.body.gpa_;
+    var pronouns_ = req.body.pronouns_;
+
+
+	var insert_statement = "INSERT INTO profile_page(full_name, username, password_, major, gpa, year, pronouns, experience, skills) VALUES('" + full_name + "','" +
+	user_name + "','" + password_ + "','" + major_ + "','" + year_ + "','"+ gpa_ + "','" + pronouns_+"') ON CONFLICT DO NOTHING;";
+
+	var profiles = 'select * from profile_page;';
+
+	db.task('post-data', task => {
+        return task.batch([
+            task.any(insert_statement),
+						task.any(profiles)
+        ]);
+    })
+	
+    .then(data => {
+		res.render('/register/add_user',{
+			my_title:"Profile",
+			profiles: data[1],
+			playerinfo: '',
+			games: ''
+		})
+	})
+	
+    .catch(err => {
+		console.log('Uh Oh I made an oopsie');
+		req.flash('error', err);
+		res.render('/register/add_user',{
+			my_title: "Profile",
+			profiles: '',
+			playerinfo: '',
+			games: ''
+		})
+	});
+
+});
+
 app.get('/home/pick_color', function(req, res) {
 	var color_choice = req.query.color_selection; // Investigate why the parameter is named "color_selection"
 	var color_options =  'select * from favorite_colors;';// Write a SQL query to retrieve the colors from the database
