@@ -59,10 +59,12 @@ app.post('/register/add_user',function(req,res){
 	var year_ = req.body.year_;
 	var gpa_ = req.body.gpa_;
     var pronouns_ = req.body.pronouns_;
+	var experience_ = eq.body.experience_;
+	var skills_ = eq.body.skills_;
 
 
 	var insert_statement = "INSERT INTO profile_page(full_name, username, password_, major, gpa, year, pronouns, experience, skills) VALUES('" + full_name + "','" +
-	user_name + "','" + password_ + "','" + major_ + "','" + year_ + "','"+ gpa_ + "','" + pronouns_+"') ON CONFLICT DO NOTHING;";
+	user_name + "','" + password_ + "','" + major_ + "','" + year_ + "','"+ gpa_ + "','" + pronouns_+ "','" +experience_+ "','" +skills_+ "') ON CONFLICT DO NOTHING;";
 
 	var profiles = 'select * from profile_page;';
 
@@ -94,7 +96,3 @@ app.post('/register/add_user',function(req,res){
 	});
 
 });
-
-
-
-
