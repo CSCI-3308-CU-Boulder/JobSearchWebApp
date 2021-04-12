@@ -123,28 +123,23 @@ app.get('/index', function(req, res) {
 
 /*Add your other get/post request handlers below here: */
 app.get('/register/add_user', function(req, res) {
-	var color_choice = req.query.color_selection; // Investigate why the parameter is named "color_selection"
-	var color_options =  'select * from profile;';// Write a SQL query to retrieve the colors from the database
-	var color_message = 'select color_msg from favorite_colors where hex_value=\''+color_choice+'\';';  // Write a SQL query to retrieve the color message for the selected color
-	console.log("This is req inside of /home/pick_color", req, "This is res", res);
+	var profiles =  'select * from user_table;';// Write a SQL query to retrieve the colors from the database
 	db.task('get-everything', task => {
         return task.batch([
-            task.any(color_options),
-            task.any(color_message)
+            task.any(profiles),
         ]);
     })
     .then(info => {
-    	res.render('pages/home',{
-				my_title: "Home Page",
-				data: info[0], // Return the color options
-				color: color_choice, // Return the color choice
-				color_msg: info[1][0].color_msg// Return the color message
+		console.log("made it in here bruh!!");
+    	res.render('pages/register', {
+				my_title: "Register",
+				data: info[0], 
 			})
     })
     .catch(err => {
-            console.log('error', err);
-            res.render('pages/home', {
-                my_title: 'Home Page',
+            console.log('There was an error!!!! in the get', err);
+            res.render('pages/register', {
+                my_title: 'Register',
                 data: '',
                 color: '',
                 color_msg: ''
@@ -168,13 +163,16 @@ app.post('/register/add_user',function(req,res){
 	var major_ = req.body.major_;
 	var year_ = req.body.year_;
 	var gpa_ = req.body.gpa_;
-    var pronouns_ = req.body.pronouns_;
+	var pronouns_ = req.body.pronouns_;
+	var str1= "no experience";
+	var str2= "no skills";
 
 
-	var insert_statement = "INSERT INTO profile_page(full_name, username, password_, major, gpa, year, pronouns, experience, skills) VALUES('" + full_name + "','" +
-	user_name + "','" + password_ + "','" + major_ + "','" + year_ + "','"+ gpa_ + "','" + pronouns_+"') ON CONFLICT DO NOTHING;";
 
-	var profiles = 'select * from profile_page;';
+	var insert_statement = "INSERT INTO user_table(full_name, username, password_, major, gpa, year, pronouns, experience, skills) VALUES('" + full_name + "','" +
+	user_name + "','" + password_ + "','" + major_ + "','" + year_ + "','"+ gpa_ + "','" + pronouns_+ "','" + str1 + "','" + str2 + "') ON CONFLICT DO NOTHING;";
+
+	var profiles = 'select * from user_table;';
 
 	db.task('post-data', task => {
         return task.batch([
@@ -195,7 +193,7 @@ app.post('/register/add_user',function(req,res){
     .catch(err => {
 		console.log('Uh Oh I made an oopsie');
 		req.flash('error', err);
-		res.render('/register/add_user',{
+		res.render('/home',{
 			my_title: "Profile",
 			profiles: '',
 			playerinfo: '',

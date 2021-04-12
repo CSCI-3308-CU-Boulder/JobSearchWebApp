@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS user_table;
+
 CREATE TABLE IF NOT EXISTS user_table (
   full_name VARCHAR(30),    
   username VARCHAR(30) NOT NULL,  
