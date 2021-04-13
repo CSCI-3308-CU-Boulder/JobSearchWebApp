@@ -170,7 +170,7 @@ app.post('/register/add_user',function(req,res){
 
 
 	var insert_statement = "INSERT INTO user_table(full_name, username, password_, major, gpa, year, pronouns, experience, skills) VALUES('" + full_name + "','" +
-	user_name + "','" + password_ + "','" + major_ + "','" + year_ + "','"+ gpa_ + "','" + pronouns_+ "','" + str1 + "','" + str2 + "') ON CONFLICT DO NOTHING;";
+	user_name + "','" + password_ + "','" + major_ + "','" + gpa_ + "','"+ year_ + "','" + pronouns_+ "','" + str1 + "','" + str2 + "') ON CONFLICT DO NOTHING;";
 
 	var profiles = 'select * from user_table;';
 
