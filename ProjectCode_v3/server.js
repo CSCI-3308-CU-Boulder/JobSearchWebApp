@@ -182,11 +182,11 @@ app.post('/register/add_user',function(req,res){
     })
 	
     .then(data => {
-		res.render('/register/add_user',{
+		res.render('pages/login',{
 			my_title:"Profile",
 			profiles: data[1],
-			playerinfo: '',
-			games: ''
+			
+			
 		})
 	})
 	
