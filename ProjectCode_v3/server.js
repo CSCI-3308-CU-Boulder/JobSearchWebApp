@@ -109,9 +109,19 @@ app.get('/profile', function(req, res) {
 
 //settings page
 app.get('/settings', function(req, res) {
+	var profiles =  'select * from user_table;';
+	db.task('get-everything', task => {
+        	return task.batch([
+            		task.any(profiles),
+        	]);
+    	})
+	.then(info => {
+                console.log(info[0]);
 	res.render('pages/settings',{
-		my_title:"Settings Page"
-	});
+		my_title:"Settings Page",
+		data: info[0]
+	})
+    });
 });
 
 //email index page
@@ -204,37 +214,6 @@ app.post('/register/add_user',function(req,res){
 
 });
 
-app.get('/home/pick_color', function(req, res) {
-	var color_choice = req.query.color_selection; // Investigate why the parameter is named "color_selection"
-	var color_options =  'select * from favorite_colors;';// Write a SQL query to retrieve the colors from the database
-	var color_message = 'select color_msg from favorite_colors where hex_value=\''+color_choice+'\';';  // Write a SQL query to retrieve the color message for the selected color
-	console.log("This is req inside of /home/pick_color", req, "This is res", res);
-	db.task('get-everything', task => {
-        return task.batch([
-            task.any(color_options),
-            task.any(color_message)
-        ]);
-    })
-    .then(info => {
-    	res.render('pages/home',{
-				my_title: "Home Page",
-				data: info[0], // Return the color options
-				color: color_choice, // Return the color choice
-				color_msg: info[1][0].color_msg// Return the color message
-			})
-    })
-    .catch(err => {
-            console.log('error', err);
-            res.render('pages/home', {
-                my_title: 'Home Page',
-                data: '',
-                color: '',
-                color_msg: ''
-            })
-    });
-
-});
-
 //older app.get below
 app.get('/home', function(req, res) {
 	var query = 'select * from favorite_colors;';
@@ -259,91 +238,6 @@ app.get('/home', function(req, res) {
         })
 });
 
-app.post('/home/pick_color', function(req, res) {
-	var color_hex = req.body.color_hex;
-	var color_name = req.body.color_name;
-	var color_message = req.body.color_message;
-	var insert_statement = 'INSERT INTO favorite_colors(hex_value, name, color_msg) VALUES(\''+color_hex+'\', \''+color_name+'\', \''+color_message+'\');'; // Write a SQL statement to insert a color into the favorite_colors table
-	var color_select = 'select * from favorite_colors;';// Write a SQL statement to retrieve all of the colors in the favorite_colors table
-	//console.log(insert_statement);
-	db.task('get-everything', task => {
-        return task.batch([
-            task.any(insert_statement),
-            task.any(color_select)
-        ]);
-    })
-    .then(info => {
-    	res.render('pages/home',{
-				my_title: "Home Page",
-				data: info[1],// Return the color choices
-				color: color_hex, // Return the hex value of the color added to the table
-				color_msg: color_message// Return the color message of the color added to the table
-			})
-    })
-    .catch(err => {
-            console.log('error', err);
-            res.render('pages/home', {
-                my_title: 'Home Page',
-                data: '',
-                color: '',
-                color_msg: ''
-            })
-    });
-});
-
-//older code below
-// app.post('/home', function(req, res) {
-// 	var get_variable = req.body.parameter_name;
-// 	res.render('pages/home',{
-// 		text_variable:"",
-// 		number_variable: 5,
-// 		parameter_variable: get_variable
-// 	});
-// });
-
-
-// Team Stats Page:
-// /team_stats - get request (no parameters)
-// 	This route will require no parameters.  It will require 3 postgres queries which will:
-// 		1. Retrieve all of the football games in the Fall 2020 Season
-// 		2. Count the number of winning games in the Fall 2020 Season
-// 		3. Count the number of lossing games in the Fall 2020 Season
-// 	The three query results will then be passed on to the team_stats view (pages/team_stats).
-// 	The team_stats view will display all fo the football games for the season, show who won each game,
-// 	and show the total number of wins/losses for the season.
-
-app.get('/team_stats', function(req, res) {
-	var fb_games = 'select * from football_games;';
-	var wins = 'select count(*) from football_games where home_score > visitor_score;';
-	var losses = 'select count(*) from football_games where home_score < visitor_score;';
-	db.task('get-everything', task => {
-		return task.batch([
-			task.any(fb_games),
-			task.any(wins),
-			task.any(losses)
-			
-		]);
-	})
-	.then(data => {
-		res.render('pages/team_stats',{
-				my_title: "Team Stats",
-				fb_games: data[0],
-				wins: data[1],
-				losses: data[2]
-			})
-	})
-	.catch(err => {
-		// display error message in case an error
-			console.log('error', err);
-			res.render('pages/team_stats',{
-				my_title: "Page Title Here",
-				fb_games: '',
-				wins: '',
-				losses: ''
-			})
-	});
-
-});
 
 app.listen(3000);
 console.log('3000 is the magic port');
