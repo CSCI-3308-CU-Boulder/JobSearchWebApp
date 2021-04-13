@@ -13,7 +13,17 @@ CREATE TABLE IF NOT EXISTS user_table (
   PRIMARY KEY(username) 
 );
 
-
-
 INSERT INTO user_table(full_name, username, password_, major, gpa, year, pronouns, experience, skills)
-VALUES('Abeal Sileshi', 'abealsileshi', 'fakepassword', 'CS', 4.00, 'senior' , 'he/him/his', 'I have minimal experience.', 'and no skills'); 
+VALUES('Abeal Sileshi', 'abealsileshi', 'fakepassword', 'CS', 4.00, 'senior' , 'he/him/his', 'I have minimal experience.', 'and no skills');
+
+DROP TABLE IF EXISTS posts;
+
+CREATE TABLE IF NOT EXISTS posts(
+  post_text VARCHAR(500) NOT NULL,
+  username_posts VARCHAR(30) REFERENCES user_table (username)
+    
+  PRIMARY KEY(posts) 
+);
+
+INSERT INTO posts(post_text)
+VALUES('This is the very first post from anything');
