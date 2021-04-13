@@ -131,6 +131,7 @@ app.get('/register/add_user', function(req, res) {
     })
     .then(info => {
 		console.log("made it in here bruh!!");
+		conole.log(info[0]);
     	res.render('pages/register', {
 				my_title: "Register",
 				data: info[0], 
