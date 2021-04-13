@@ -38,7 +38,7 @@ html, body{
   color: #2D2D34;
   margin: 0;
   padding: 0 0 10px;
-  font-size: 30px;
+  font-size: 20px;
   text-align: center;
   
 }
@@ -68,7 +68,7 @@ html, body{
 
 }
 
-.loginbox input[name="submit"]{
+.nav-link{
   border: none;
   outline: none;
   text-align: center;
@@ -80,7 +80,7 @@ html, body{
   border-radius: 20px;
 }
 
-.loginbox input[name="submit"]:hover{
+.nav-link:hover{
   cursor: pointer;
   background: #EB5E28;
   color: #2D2D34;
