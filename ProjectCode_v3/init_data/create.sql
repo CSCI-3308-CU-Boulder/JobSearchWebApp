@@ -20,9 +20,10 @@ DROP TABLE IF EXISTS posts;
 
 CREATE TABLE IF NOT EXISTS posts(
   post_text VARCHAR(500) NOT NULL,
-  username_posts VARCHAR(30) REFERENCES user_table (username)
+  post_id SERIAL NOT NULL,
+  username_posts VARCHAR(30) REFERENCES user_table (username),
     
-  PRIMARY KEY(posts) 
+  PRIMARY KEY(post_id) 
 );
 
 INSERT INTO posts(post_text)
