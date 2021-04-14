@@ -48,6 +48,13 @@ app.get('/', function(req, res) {
 	});
 });
 
+app.get('/reset', function(req, res) {
+	res.render('pages/reset', {
+		my_title:"reset page"
+	});
+
+});
+
 // registration page
 app.get('/register', function(req, res) {
 	res.render('pages/register',{
@@ -96,20 +103,26 @@ app.get('/index', function(req, res) {
 	});
 });
 
-/*Add your other get/post request handlers below here: */
-app.get('/register/add_user', function(req, res) {
-	var profiles =  'select * from user_table;';// Write a SQL query to retrieve the colors from the database
-	db.task('get-everything', task => {
+app.get('/login/login_', function(req, res) {
+	
+	var userin = req.body.username;
+	var passin = req.body.password;
+	//var sqluser = 'select username from user_table where username=\''+userin+'\';';
+	var sqlcreds = 'select * from user_table where password_=\''+passin+'\' and username=\''+userin+'\';';
+	var found = task.any(sqlcreds);
+	
+	if (found)
+	{
+	db.task('get-credentials', task => {
         return task.batch([
             task.any(sqlcreds),
         ]);
     })
-    .then(info => {
-		console.log("made it in here bruh!!");
-		console.log(info[0]);
-    	res.render('pages/register', {
-				my_title: "Register",
-				data: info[0], 
+    
+	.then(info => {
+    	res.render('pages/home',{
+				my_title: "Home Page",
+				data: info[0],
 			})
     })
 
@@ -131,6 +144,7 @@ app.get('/register/add_user', function(req, res) {
 });
 
 app.post('/register/add_user',function(req,res){
+
 	var full_name = req.body.full_name;
 	var user_name = req.body.user_name;
 	var password_ = req.body.password_;
@@ -172,54 +186,6 @@ app.post('/register/add_user',function(req,res){
 
 });
 
-app.get('/home/post', function(req, res){
-	var posts = 'select * from posts;';
-	db.task('get-everything', task => {
-        return task.batch([
-            task.any(posts)
-        ]);
-    })
-        .then( info => {
-            res.render('pages/home',{
-				my_title: "Home Page",
-				posts: info[0] //info[0][0] is the first post 
-			})
-        })
-        .catch(function (err) {
-            console.log('error', err);
-            res.render('pages/home', {
-                my_title: 'Home Page',
-                data: ''
-			})
-		});        
-});
-
-app.post('/home/post', function(req, res){
-	var new_post = req.body.new_post;
-
-	var insert_statement = "INSERT INTO user_table(full_name, username, password_, major, gpa, year, pronouns, experience, skills, question) VALUES('" + full_name + "','" +
-	user_name + "','" + password_ + "','" + major_ + "','" + gpa_ + "','"+ year_ + "','" + pronouns_+ "','" + experience_ + "','" + skills_ + "','"+ question_ +"') ON CONFLICT DO NOTHING;";
-	
-	var posts = 'select * from posts;';
-	db.task('get-everything', task => {
-        return task.batch([
-            task.any(posts)
-        ]);
-    })
-        .then( info => {
-            res.render('pages/home',{
-				my_title: "Home Page",
-				posts: info[0] //info[0][0] is the first post 
-			})
-        })
-        .catch(function (err) {
-            console.log('error', err);
-            res.render('pages/home', {
-                my_title: 'Home Page',
-                data: ''
-			})
-		});        
-});
 
 app.listen(3000);
 console.log('3000 is the magic port');
