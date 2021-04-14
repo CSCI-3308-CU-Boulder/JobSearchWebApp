@@ -131,6 +131,22 @@ app.get('/index', function(req, res) {
 	});
 });
 
+app.post('/home/pick_color', function(req, res) {
+        var insert_statement = "";
+
+        db.task('get-everything', task => {
+                                return task.batch([
+                                        task.any(insert_statement),
+                                ]);
+                        })
+                .then(info => {
+                        res.render('pages/home',{
+                                my_title: "Home Page",
+                                data: info[1],
+                        })
+                })
+});
+
 /*Add your other get/post request handlers below here: */
 app.get('/register/add_user', function(req, res) {
 	var profiles =  'select * from user_table;';// Write a SQL query to retrieve the colors from the database
