@@ -101,8 +101,11 @@ app.get('/login/login_', function(req, res) {
 	var userin = req.body.username;
 	var passin = req.body.password;
 	//var sqluser = 'select username from user_table where username=\''+userin+'\';';
-	var sqlcreds = 'select * from user_table where password=\''+passin+'\' and where username=\''+userin+'\';';
-
+	var sqlcreds = 'select * from user_table where password_=\''+passin+'\' and username=\''+userin+'\';';
+	var found = task.any(sqlcreds);
+	
+	if (found)
+	{
 	db.task('get-credentials', task => {
         return task.batch([
             task.any(sqlcreds),
@@ -123,6 +126,13 @@ app.get('/login/login_', function(req, res) {
                 data: '',
             })
     });
+	}
+
+	else
+	{
+		console.log('Unable to find User', err);
+		res.render('pages/login');
+	}
 
 });
 
