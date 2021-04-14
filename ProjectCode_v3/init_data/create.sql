@@ -10,11 +10,12 @@ CREATE TABLE IF NOT EXISTS user_table (
   pronouns VARCHAR(30),
   experience VARCHAR(500),
   skills VARCHAR(500),
+  question VARCHAR(200),
   PRIMARY KEY(username) 
 );
 
-INSERT INTO user_table(full_name, username, password_, major, gpa, year, pronouns, experience, skills)
-VALUES('Abeal Sileshi', 'abealsileshi', 'fakepassword', 'CS', 4.00, 'senior' , 'he/him/his', 'I have minimal experience.', 'and no skills');
+INSERT INTO user_table(full_name, username, password_, major, gpa, year, pronouns, experience, skills, question)
+VALUES('Abeal Sileshi', 'abealsileshi', 'fakepassword', 'CS', 4.00, 'senior' , 'he/him/his', 'I have minimal experience.', 'and no skills', 'boulder');
 
 DROP TABLE IF EXISTS posts;
 

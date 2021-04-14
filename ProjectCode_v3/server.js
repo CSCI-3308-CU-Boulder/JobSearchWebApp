@@ -193,11 +193,12 @@ app.post('/register/add_user',function(req,res){
 	var pronouns_ = req.body.pronouns_;
 	var experience_= req.body.experience_;
 	var skills_= req.body.skills_;
+	var question_ = req.body.question_;
 
 
 
-	var insert_statement = "INSERT INTO user_table(full_name, username, password_, major, gpa, year, pronouns, experience, skills) VALUES('" + full_name + "','" +
-	user_name + "','" + password_ + "','" + major_ + "','" + gpa_ + "','"+ year_ + "','" + pronouns_+ "','" + experience_ + "','" + skills_ + "') ON CONFLICT DO NOTHING;";
+	var insert_statement = "INSERT INTO user_table(full_name, username, password_, major, gpa, year, pronouns, experience, skills, question) VALUES('" + full_name + "','" +
+	user_name + "','" + password_ + "','" + major_ + "','" + gpa_ + "','"+ year_ + "','" + pronouns_+ "','" + experience_ + "','" + skills_ + "','"+ question_ +"') ON CONFLICT DO NOTHING;";
 
 	var profiles = 'select * from user_table;';
 
