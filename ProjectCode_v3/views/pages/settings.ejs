@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
+    <script defer src="..\..\resources\js\my_script.js"></script>
     <title>Settings Page</title>
         <link rel='icon' href='../resources/img/favicon.ico' type='image/x-icon'/>
     <!-- Bootstrap core CSS -->
@@ -13,14 +14,6 @@
 </head>
 
 <body>
-<!-- <nav class="navbar" style="background-color: #add8e6;">
-	<ul class="navbar-nav mr-auto">
-	<li class="nav-item active">
-	<a class="nav-link" href="/home" style="color: black">Done<span class="sr-only">(current)</span></a>
-	</li>
-</nav> -->
-<!-- <div style="padding:15px;"> -->
-        
 	<div class="col-8">
 		<h1>Account Settings</h1>
 		<div class="row">
@@ -32,10 +25,9 @@
 	</div>
 	<div class="col-9">
 		
-			<form>
 				<div class="form-group">
 					<label>Name</label>
-					<input class="form-control" id="name" placeholder="<%- data[1].full_name %>">
+					<input class="form-control" name="full_name" id="name" placeholder="<%- data[1].full_name %>">
 				</div>
 
 				<div class="form-group">
@@ -55,12 +47,12 @@
 
 				<div class="form-group">
 					<label>Username</label>
-					<input class="form-control" id="username" placeholder="<%- data[1].username %>">
+					<input class="form-control" name="user_name" id="username" placeholder="<%- data[1].username %>">
 				</div>
 
 				<div class="form-group">
 					<label>Password</label>
-					<input class="form-control" id="password" placeholder="<%- data[1].password_ %>">
+					<input class="form-control" type="password" id="password">
 				</div>
 
 				<div class="form-group">
@@ -74,10 +66,12 @@
 				</div>
 								
 				<div class="row mt-5">
+
 					
 					<div class="col">
-						<button id="submit" class="btn btn-primary btn-block" onclick="save_profile()">Save Changes</button>
+						<button id="submit" class="btn btn-primary btn-block">Save Changes</button>
 					</div>
+
 						
 					<div class="col">
 						<button class="btn btn-default btn-block" onclick="cancel()" style="background-color:#989898;">Cancel</button>
@@ -89,7 +83,6 @@
 				<center>
 				<button type="button" id ="delete" class="btn btn-block" onclick="delete_profile()" style="background-color:red; width:150px;">Delete profile</button>
 				</center>
-			</form>
 	</div>
 </div>
 </div>

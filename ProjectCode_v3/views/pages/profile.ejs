@@ -39,25 +39,32 @@ img {
 }
 .row {
   float:left;
+  margin: auto;
+}
+.col {
+  float:left;
+  width: 100%;
 }
 .darkMode {
   background-color: #2D2D34;
   color: #FFFFFA;
 }
+
 </style>
 </head> 
 <!-- <body> -->
-
+<body>
+<div class= "row">
 <div class="col-3">
   <div class="card" style="width: 18rem;">
-    <img class="card-img-top mx-auto d-block" style="float: center; margin: 1rem" src="https://i.pinimg.com/originals/3d/99/a7/3d99a7e6cb285c7f7cf5e87131e45c92.jpg" alt="Card image cap">
+    <img class="card-img-top mx-auto d-block" style="float: center;" src="https://i.pinimg.com/originals/3d/99/a7/3d99a7e6cb285c7f7cf5e87131e45c92.jpg" alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-title">Name</h5>
+      <h5 class="card-title"><%- data[1].full_name %></h5>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Major</li>
-        <li class="list-group-item">Year</li>
-        <li class="list-group-item">GPA</li>
-        <li class="list-group-item">Pronouns</li>
+        <li class="list-group-item"><%- data[1].major %></li>
+        <li class="list-group-item"><%- data[1].year %></li>
+        <li class="list-group-item"><%- data[1].gpa %></li>
+        <li class="list-group-item"><%- data[1].pronouns %></li>
       </ul>
       <a class="nav-link" href="/index">Email Message</a>
     </div>
@@ -65,47 +72,20 @@ img {
   <div class="card" style="width: 18rem; margin-top: 1rem;">
     <div class="card-body">
       <h5 class="card-title">Skills</h5>
-      <p class="card-text">Bulleted list of skills the client wishes to display</p>
+      <p class="card-text"><%- data[1].skills %></p>
     </div>
   </div>
 </div>
-<div class="col-5" style="width: 100%; text-align: left; margin-bottom: 2rem;">
-
-  <div class="card" style="width: 100%; margin-top: 1rem;">
-    <div class="card-body">
-      <h5 class="card-title">Introduction</h5>
-      <p class="card-text">This will be filled with user input</p>
-    </div>
-  </div>
-
-  <div class="card" style="width: 100%; margin-top: 1rem;">
-    <div class="card-body">
-      <h5 class="card-title">Education</h5>
-      <p class="card-text">Education can be added here in chronological order possibly</p>
-    </div>
-  </div>
-
-  <div class="card" style="width: 100%; margin-top: 1rem;">
-    <div class="card-body">
-      <h5 class="card-title">Work and Volunteer Experience</h5>
-      <p class="card-text">Client can input their work and volunteer here that will be visible.</p>
-    </div>
-  </div>
-
-  <div class="card" style="width: 100%; margin-top: 1rem;">
-    <div class="card-body">
-      <h5 class="card-title">Projects</h5>
-      <p class="card-text">List of projects the client wishes to display. -> can forward to git repos?</p>
-    </div>
-  </div>
-
-  <div class="card" style="width: 100%; margin-top: 1rem;">
-    <div class="card-body">
-      <h5 class="card-title">Relevent Coursework</h5>
-      <p class="card-text">Bulleted list of coursework completed the client wishes to display.</p>
-    </div>
-  </div>
-
 </div>
 
-<%- include('../partials/footer') %>
+
+  <div class="card" style="width: 50%;">
+    <div class="card-body">
+      <h5 class="card-title">Experience</h5>
+      <p class="card-text"><%- data[1].experience %></p>
+    </div>
+  </div>
+
+  <%- include('../partials/footer') %>
+
+</body>
