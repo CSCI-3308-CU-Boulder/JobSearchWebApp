@@ -102,9 +102,19 @@ app.get('/register', function(req, res) {
 
 //profile page
 app.get('/profile', function(req, res) {
+	var profiles =  'select * from user_table;';
+	db.task('get-everything', task => {
+        	return task.batch([
+            		task.any(profiles),
+        	]);
+    	})
+	.then(info => {
+                console.log(info[0]);
 	res.render('pages/profile',{
-		my_title:"Profile Page"
-	});
+		my_title:"Profile Page",
+		data: info[0]
+	})
+    });
 });
 
 //settings page
