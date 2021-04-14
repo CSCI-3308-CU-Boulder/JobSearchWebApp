@@ -110,13 +110,14 @@ app.get('/profile', function(req, res) {
 //settings page
 app.get('/settings', function(req, res) {
 	var profiles =  'select * from user_table;';
+	storageMode: "localStorage";
 	db.task('get-everything', task => {
         	return task.batch([
             		task.any(profiles),
         	]);
     	})
 	.then(info => {
-                console.log(info[0]);
+                console.log(info[0][1]);
 	res.render('pages/settings',{
 		my_title:"Settings Page",
 		data: info[0]
@@ -124,27 +125,54 @@ app.get('/settings', function(req, res) {
     });
 });
 
+app.post('/settings/update',function(req,res){
+
+
+	var profiles = "SELECT * FROM user_table;";
+
+        var full_name = req.body.full_name;
+        var user_name = req.body.user_name;
+        var password_ = req.body.password_;
+        var major_ = req.body.major_;
+        var year_ = req.body.year_;
+        var gpa_ = req.body.gpa_;
+        var pronouns_ = req.body.pronouns_;
+        var experience_= req.body.experience_;
+        var skills_= req.body.skills_;
+
+        var update_statement = "UPDATE user_table SET full_name = '" + full_name + "';";
+
+	storageMode: "localStorage";
+
+        db.task('post-data', task => {
+        return task.batch([
+            task.any(update_statement),
+            task.any(profiles)
+        ]);
+    })
+    .then(info => {
+		console.log(info[0]);
+                res.render('pages/settings',{
+                        my_title:"Settings Page",
+                        data: info[0]
+                })
+        })
+
+    .catch(err => {
+                console.log('Uh Oh I made an oopsie');
+                req.flash('error', err);
+                res.render('/home',{
+                        my_title: "Profile",
+                        profiles: ''
+                })
+        });
+});
+
 //email index page
 app.get('/index', function(req, res) {
 	res.render('pages/index',{
 		my_title:"Email Page"
 	});
-});
-
-app.post('/home/pick_color', function(req, res) {
-        var insert_statement = "";
-
-        db.task('get-everything', task => {
-                                return task.batch([
-                                        task.any(insert_statement),
-                                ]);
-                        })
-                .then(info => {
-                        res.render('pages/home',{
-                                my_title: "Home Page",
-                                data: info[1],
-                        })
-                })
 });
 
 /*Add your other get/post request handlers below here: */

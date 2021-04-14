@@ -8,11 +8,13 @@ function save_profile()
 	name = document.getElementById("name");
 	major = document.getElementById("major");
 	gpa = document.getElementById("gpa");
-	uni = document.getElementById("uni");
+	pronouns = document.getElementById("pronouns");
 	experience = document.getElementById("experience");
 	skills = document.getElementById("skills");
 	username = document.getElementById("username");
 	password = document.getElementById("password");
+
+	window.location.href = "/home";
 }
 
 function delete_profile()
@@ -21,7 +23,7 @@ function delete_profile()
 	if (result)
 	{
     		alert("Profile deleted");
-		window.location.href = "home.html";
+		window.location.href = "/home";
 	}
 }
 
