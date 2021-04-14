@@ -12,18 +12,35 @@
     <div class="card-body">
       <h3 class = "card-title">My Feed</h3>
       <div class="forumDivOuter" style>
+        <form action="/home/post" method="post" id="add_post">
         <div id="forumDiv">
-          <textarea class="autoExpand forumPost form-control" rows="4" data-min-rows="4" placeholder="Create a post"></textarea>
+          <textarea class="autoExpand forumPost form-control" name="new_post"   rows="4" data-min-rows="4" placeholder="Create a post"> </textarea>
           <br>
           <button class="forumPostButton btn btn-default btn-outline-primary">Post</button>
+        </form>
         </div>
       </div>
       <br>
-      <p>Test Text.</p>
-
     </div> <!-- End card body-->
     <!-- <img class="rounded-circle mx-auto" src="" alt="Card image" style="width:500px; height:500px;"> -->
   </div> <!-- End card-->
+  
+  <form action="/home/post" method="get">
+    <!-- TODO: Second EJS Update -->
+    <%
+    if (posts) {
+      var user_posts = '';
+      posts.forEach(function(item){
+        user_posts += '<br><div class="card"><div class="card-header"> User Post </div>';
+        if(item.post_text){
+          user_posts += '<div class="card-body"> <blockquote class="blockquote mb-0">  <p>' + item.post_text + '</p> </blockquote></div></div><br>';
+        }
+      }); %>
+    <%- user_posts %>
+    <% } %>
+  </form>
+
+  
   <br>
   <h3>Recommended jobs for you</h3>
   <div class="card-group card-color">

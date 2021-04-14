@@ -131,22 +131,6 @@ app.get('/index', function(req, res) {
 	});
 });
 
-app.post('/home/pick_color', function(req, res) {
-        var insert_statement = "";
-
-        db.task('get-everything', task => {
-                                return task.batch([
-                                        task.any(insert_statement),
-                                ]);
-                        })
-                .then(info => {
-                        res.render('pages/home',{
-                                my_title: "Home Page",
-                                data: info[1],
-                        })
-                })
-});
-
 /*Add your other get/post request handlers below here: */
 app.get('/register/add_user', function(req, res) {
 	var profiles =  'select * from user_table;';// Write a SQL query to retrieve the colors from the database
@@ -157,7 +141,7 @@ app.get('/register/add_user', function(req, res) {
     })
     .then(info => {
 		console.log("made it in here bruh!!");
-		conole.log(info[0]);
+		console.log(info[0]);
     	res.render('pages/register', {
 				my_title: "Register",
 				data: info[0], 
@@ -176,14 +160,6 @@ app.get('/register/add_user', function(req, res) {
 });
 
 app.post('/register/add_user',function(req,res){
-	// {
-	// 	player_name:"Text Value",
-	// 	player_year: "Year",
-	// 	player_major: "major",
-	// 	player_passing_yards : 10,
-	// 	player_rushing_yards : 10,
-	//  player_receiving_yards : 10
-	// }
 	var full_name = req.body.full_name;
 	var user_name = req.body.user_name;
 	var password_ = req.body.password_;
@@ -231,30 +207,54 @@ app.post('/register/add_user',function(req,res){
 
 });
 
-//older app.get below
-app.get('/home', function(req, res) {
-	var query = 'select * from favorite_colors;';
-	db.any(query)
-        .then(function (rows) {
+app.get('/home/post', function(req, res){
+	var posts = 'select * from posts;';
+	db.task('get-everything', task => {
+        return task.batch([
+            task.any(posts)
+        ]);
+    })
+        .then( info => {
             res.render('pages/home',{
 				my_title: "Home Page",
-				data: rows,
-				color: '',
-				color_msg: ''
+				posts: info[0] //info[0][0] is the first post 
 			})
-
         })
         .catch(function (err) {
             console.log('error', err);
             res.render('pages/home', {
                 my_title: 'Home Page',
-                data: '',
-                color: '',
-                color_msg: ''
-            })
-        })
+                data: ''
+			})
+		});        
 });
 
+app.post('/home/post', function(req, res){
+	var new_post = req.body.new_post;
+
+	var insert_statement = "INSERT INTO user_table(full_name, username, password_, major, gpa, year, pronouns, experience, skills, question) VALUES('" + full_name + "','" +
+	user_name + "','" + password_ + "','" + major_ + "','" + gpa_ + "','"+ year_ + "','" + pronouns_+ "','" + experience_ + "','" + skills_ + "','"+ question_ +"') ON CONFLICT DO NOTHING;";
+	
+	var posts = 'select * from posts;';
+	db.task('get-everything', task => {
+        return task.batch([
+            task.any(posts)
+        ]);
+    })
+        .then( info => {
+            res.render('pages/home',{
+				my_title: "Home Page",
+				posts: info[0] //info[0][0] is the first post 
+			})
+        })
+        .catch(function (err) {
+            console.log('error', err);
+            res.render('pages/home', {
+                my_title: 'Home Page',
+                data: ''
+			})
+		});        
+});
 
 app.listen(3000);
 console.log('3000 is the magic port');
