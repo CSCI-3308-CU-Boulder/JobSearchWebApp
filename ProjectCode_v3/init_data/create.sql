@@ -28,4 +28,5 @@ CREATE TABLE IF NOT EXISTS posts(
 );
 
 INSERT INTO posts(post_text)
-VALUES('This is the very first post from anything');
+VALUES('This is the very first post from anything'),
+('This is the second post we have here');

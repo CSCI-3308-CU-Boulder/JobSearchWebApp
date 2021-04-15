@@ -12,7 +12,7 @@
     <div class="card-body">
       <h3 class = "card-title">My Feed</h3>
       <div class="forumDivOuter" style>
-        <form action="/home/post" method="post" id="add_post">
+        <form action="/home/add_post" method="post" id="add_post">
         <div id="forumDiv">
           <textarea class="autoExpand forumPost form-control" name="new_post"   rows="4" data-min-rows="4" placeholder="Create a post"> </textarea>
           <br>
@@ -25,7 +25,7 @@
     <!-- <img class="rounded-circle mx-auto" src="" alt="Card image" style="width:500px; height:500px;"> -->
   </div> <!-- End card-->
   
-  <form action="/home/post" method="get">
+  <form action="/home" method="get">
     <!-- TODO: Second EJS Update -->
     <%
     if (posts) {
@@ -39,8 +39,6 @@
     <%- user_posts %>
     <% } %>
   </form>
-
-  
   <br>
   <h3>Recommended jobs for you</h3>
   <div class="card-group card-color">
