@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Gmail API demo</title>
+    <title>Sending Online Resume</title>
     <meta charset="UTF-8">
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -18,7 +18,7 @@
   </head>
   <body>
     <div class="container">
-      <h1>Gmail API demo</h1>
+      <h1>Sending Online Resume</h1>
       <a href="#compose-modal" data-toggle="modal" id="compose-button" class="btn btn-primary pull-right hidden">Compose</a><!-- new -->
       <button id="authorize-button" class="btn btn-primary hidden">Authorize</button>
 
@@ -44,16 +44,13 @@
           </div>
           <form onsubmit="return sendEmail();">
             <div class="modal-body">
-              <div class="form-group">
-                <input type="email" class="form-control" id="compose-to" placeholder="To" required />
-              </div>
+
+                <p class="card-text" id="compose-to">TO: <%- data[2].full_name %></p>
+                <p class="card-text" id="compose-subject">SUBJECT: <%- data[2].full_name %>: Job Interest</p>
+    
     
               <div class="form-group">
-                <input type="text" class="form-control" id="compose-subject" placeholder="Subject" required />
-              </div>
-    
-              <div class="form-group">
-                <textarea class="form-control" id="compose-message" placeholder="Message" rows="10" required></textarea>
+                <textarea class="form-control" id="compose-message" placeholder="Add an introduction if you would like" rows="10" required></textarea>
               </div>
             </div>
             <div class="modal-footer">
@@ -169,10 +166,11 @@
 
           sendMessage(
             {
-              'To': $('#compose-to').val(),
-              'Subject': $('#compose-subject').val()
+              'To': ('<%- data[2].username %>'),
+              'Subject': ('<%- data[2].full_name %>: Job Interest')
             },
-            $('#compose-message').val(),
+            $('#compose-message').val() + (' <%- data[2].experience %>'),
+          
             composeTidy
           );
 
