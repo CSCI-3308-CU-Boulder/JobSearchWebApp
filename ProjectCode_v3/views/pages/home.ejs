@@ -31,7 +31,7 @@
     if (posts) {
       var user_posts = '';
       posts.forEach(function(item){
-        user_posts += '<br><div class="card"><div class="card-header"> User Post </div>';
+        user_posts += '<br><div class="card"><div class="card-header">'  +  item.username_posts   + '</div>';
         if(item.post_text){
           user_posts += '<div class="card-body"> <blockquote class="blockquote mb-0">  <p>' + item.post_text + '</p> </blockquote></div></div><br>';
         }

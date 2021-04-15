@@ -24,10 +24,11 @@ CREATE TABLE IF NOT EXISTS posts(
   post_text VARCHAR(500) NOT NULL,
   post_id SERIAL NOT NULL,
   username_posts VARCHAR(30) REFERENCES user_table (username),
-    
+
   PRIMARY KEY(post_id) 
 );
 
-INSERT INTO posts(post_text)
-VALUES('This is the very first post from anything'),
-('This is the second post we have here');
+INSERT INTO posts(post_text, username_posts)
+VALUES('This is the very first post from anything', 'abealsileshi' ),
+('This is the second post we have here', 'obama');
+

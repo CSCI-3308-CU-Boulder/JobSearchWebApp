@@ -14,6 +14,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 var pgp = require('pg-promise')();
 
 //sessions package is what we'll use to determine if the user logged-in
+var passport = require("passport");
+var session = require("express-session");
 
 /**********************
   Database Connection information
@@ -56,6 +58,7 @@ app.post('/auth', function(request, response) {
 	var posts = 'select * from posts;'; //we want to load up all the posts for the user once they get to 
 
 	var query = 'SELECT * FROM user_table WHERE username =\''+username+'\' AND password_ =\''+password+'\';';
+	console.log(query);
 	if (username && password) {
 		db.task('get-everything', task => {
 			return task.batch([
@@ -64,11 +67,12 @@ app.post('/auth', function(request, response) {
 			]);
 		})
 			.then( info => {
-				console.log(info[0])
-				if(len(info[0]) > 0){ 
+				console.log(info[1]);
+				if(info[0].length > 0){ 
 					response.render('pages/home',{
 						my_title: "Home Page",
-						posts: info[1] //info[1] is the posts, 0 is the query
+						posts: info[1], //info[1] is the posts, 0 is the query
+						users: info[0]
 					})
 				}
 				else{
