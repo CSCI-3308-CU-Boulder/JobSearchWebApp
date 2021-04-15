@@ -15,7 +15,8 @@ CREATE TABLE IF NOT EXISTS user_table (
 );
 
 INSERT INTO user_table(full_name, username, password_, major, gpa, year, pronouns, experience, skills, question)
-VALUES('Abeal Sileshi', 'abealsileshi', 'fakepassword', 'CS', 4.00, 'senior' , 'he/him/his', 'I have minimal experience.', 'and no skills', 'boulder');
+VALUES('Abeal Sileshi', 'abealsileshi', 'fakepassword', 'CS', 4.00, 'senior' , 'he/him/his', 'I have minimal experience.', 'and no skills', 'boulder'),
+('Barack Obama', 'obama', '2020', 'law', 4.00, 'senior' , 'he/him/his', 'I was president.', 'public speaking skills', 'chicago');
 
 DROP TABLE IF EXISTS posts;
 

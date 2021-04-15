@@ -63,17 +63,28 @@ app.post('/auth', function(request, response) {
 				task.any(posts)
 			]);
 		})
+
 			.then( info => {
-				response.render('pages/home',{
-					my_title: "Home Page",
-					posts: info[1] //info[1] is the posts, 0 is the query
-				})
+				console.log(info[0])
+				if(len(info[0]) > 0){ 
+					response.render('pages/home',{
+						my_title: "Home Page",
+						posts: info[1] //info[1] is the posts, 0 is the query
+					})
+				}
+				else{
+					response.render('pages/login', {
+						my_title: 'Login Page',
+						data: ''
+					})
+				}
+			
 			})
 			.catch(function (err) {
 				console.log("THIS MUST MEAN THAT THIS QUERY WAS INVALID");
 				console.log('error', err);
 				response.render('pages/login', {
-					my_title: 'Home Page',
+					my_title: 'Login Page',
 					data: ''
 				})
 			});       
@@ -122,6 +133,34 @@ app.get('/home', function(req, res) { //this loads up all the pages
         });       
 });
 
+app.post('/home', function(req, res){
+    var new_post = req.body.new_post;
+
+    var insert_statement = "INSERT INTO posts(post_text) VALUES('" + new_post +"') ON CONFLICT DO NOTHING;";
+    
+    var posts = 'select * from posts;';
+    db.task('get-everything', task => {
+        return task.batch([
+			task.any(insert_statement),
+			task.any(posts)
+        ]);
+    })
+        .then( info => {
+            res.render('pages/home',{
+                my_title: "Home Page",
+                posts: info[1] //info[0][0] is the first post 
+            })
+        })
+        .catch(function (err) {
+            console.log('error', err);
+            res.render('pages/home', {
+                my_title: 'Home Page',
+                data: ''
+            })
+        });        
+});
+
+
 //profile page
 app.get('/profile', function(req, res) {
 	var profiles =  'select * from user_table;';
@@ -131,7 +170,7 @@ app.get('/profile', function(req, res) {
         	]);
     	})
 	.then(info => {
-                console.log(info[0]);
+    console.log(info[0]);
 	res.render('pages/profile',{
 		my_title:"Profile Page",
 		data: info[0]
@@ -206,33 +245,6 @@ app.post('/register/add_user',function(req,res){
 
 });
 
-
-app.post('/home/add_post', function(req, res){
-    var new_post = req.body.new_post;
-
-    var insert_statement = "INSERT INTO posts(post_text) VALUES('" + new_post +"') ON CONFLICT DO NOTHING;";
-    
-    var posts = 'select * from posts;';
-    db.task('get-everything', task => {
-        return task.batch([
-			task.any(insert_statement),
-			task.any(posts)
-        ]);
-    })
-        .then( info => {
-            res.render('pages/home',{
-                my_title: "Home Page",
-                posts: info[0] //info[0][0] is the first post 
-            })
-        })
-        .catch(function (err) {
-            console.log('error', err);
-            res.render('pages/home', {
-                my_title: 'Home Page',
-                data: ''
-            })
-        });        
-});
 
 
 app.listen(3000);
