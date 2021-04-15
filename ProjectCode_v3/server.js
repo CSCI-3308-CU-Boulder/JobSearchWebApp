@@ -204,6 +204,33 @@ app.get('/index', function(req, res) {
 	});
 });
 
+//ZC
+app.get('/visiting_profile', function(req, res) { //this loads up all the pages
+	var query = 'SELECT * FROM user_table WHERE full_name =\''+full_name+'\';';
+	var full_name = request.body.full_name;
+
+    db.task('get-everything', task => {
+        return task.batch([
+            task.any(query)
+        ]);
+    })
+        .then( info => {
+			console.log(info[0]);
+            res.render('pages/visiting_profile',{
+                my_title: "Visiting Profile Page",
+                full_name: info[0] //info[0][0] is the first post 
+            })
+        })
+        .catch(function (err) {
+            console.log('error', err);
+            res.render('pages/home', {
+                my_title: 'Home Page',
+                data: ''
+            })
+        });       
+});
+
+
 app.post('/register/add_user',function(req,res){
 
 	var full_name = req.body.full_name;
