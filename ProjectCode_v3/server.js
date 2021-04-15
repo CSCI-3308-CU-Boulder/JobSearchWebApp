@@ -180,6 +180,23 @@ app.get('/profile', function(req, res) {
     });
 });
 
+//visiting profile page ZC
+app.get('/visiting_profile', function(req, res) {
+	var profiles =  'select * from user_table;';
+	db.task('get-everything', task => {
+        	return task.batch([
+            		task.any(profiles),
+        	]);
+    	})
+	.then(info => {
+                console.log(info[0]);
+	res.render('pages/visiting_profile',{
+		my_title:"Visiting Profile Page",
+		data: info[0]
+	})
+    });
+});
+
 //settings page
 app.get('/settings', function(req, res) {
 	var profiles =  'select * from user_table;';
