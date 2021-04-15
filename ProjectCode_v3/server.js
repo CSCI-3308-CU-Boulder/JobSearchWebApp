@@ -63,7 +63,6 @@ app.post('/auth', function(request, response) {
 				task.any(posts)
 			]);
 		})
-
 			.then( info => {
 				console.log(info[0])
 				if(len(info[0]) > 0){ 
@@ -92,8 +91,7 @@ app.post('/auth', function(request, response) {
 	} else {
 		response.send('Please enter Username and Password!');
 		response.end();
-	}
-	 
+	}	 
 });
 
 
@@ -158,37 +156,6 @@ app.post('/home', function(req, res){
                 data: ''
             })
         });        
-});
-
-
-app.get('/login/login_', function(req, res) {
-	
-	var userin = req.body.username;
-	var passin = req.body.password;
-	//var sqluser = 'select username from user_table where username=\''+userin+'\';';
-	var sqlcreds = 'select * from user_table where password=\''+passin+'\' and where username=\''+userin+'\';';
-
-	db.task('get-credentials', task => {
-        return task.batch([
-            task.any(sqlcreds),
-        ]);
-    })
-    
-	.then(info => {
-    	res.render('pages/home',{
-				my_title: "Home Page",
-				data: info[0],
-			})
-    })
-
-    .catch(err => {
-            console.log('Unable to find User', err);
-            res.render('pages/login', {
-                my_title: 'Login Page',
-                data: '',
-            })
-    });
-
 });
 
 
