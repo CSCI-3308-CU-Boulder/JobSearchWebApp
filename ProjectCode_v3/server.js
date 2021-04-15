@@ -62,6 +62,12 @@ app.get('/register', function(req, res) {
 	});
 });
 
+app.get('/home', function(req, res) {
+	res.render('pages/home',{
+		my_title:"home Page"
+	});
+});
+
 //profile page
 app.get('/profile', function(req, res) {
 	var profiles =  'select * from user_table;';
@@ -184,6 +190,55 @@ app.post('/register/add_user',function(req,res){
 		})
 	});
 
+});
+
+app.get('/home/post', function(req, res){
+    var posts = 'select * from posts;';
+    db.task('get-everything', task => {
+        return task.batch([
+            task.any(posts)
+        ]);
+    })
+        .then( info => {
+            res.render('pages/home',{
+                my_title: "Home Page",
+                posts: info[0] //info[0][0] is the first post 
+            })
+        })
+        .catch(function (err) {
+            console.log('error', err);
+            res.render('pages/home', {
+                my_title: 'Home Page',
+                data: ''
+            })
+        });        
+});
+
+app.post('/home/post', function(req, res){
+    var new_post = req.body.new_post;
+
+    var insert_statement = "INSERT INTO user_table(full_name, username, password_, major, gpa, year, pronouns, experience, skills, question) VALUES('" + full_name + "','" +
+    user_name + "','" + password_ + "','" + major_ + "','" + gpa_ + "','"+ year_ + "','" + pronouns_+ "','" + experience_ + "','" + skills_ + "','"+ question_ +"') ON CONFLICT DO NOTHING;";
+    
+    var posts = 'select * from posts;';
+    db.task('get-everything', task => {
+        return task.batch([
+            task.any(posts)
+        ]);
+    })
+        .then( info => {
+            res.render('pages/home',{
+                my_title: "Home Page",
+                posts: info[0] //info[0][0] is the first post 
+            })
+        })
+        .catch(function (err) {
+            console.log('error', err);
+            res.render('pages/home', {
+                my_title: 'Home Page',
+                data: ''
+            })
+        });        
 });
 
 
