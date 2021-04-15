@@ -13,6 +13,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 //Create Database Connection
 var pgp = require('pg-promise')();
 
+//sessions package is what we'll use to determine if the user logged-in
+
 /**********************
   Database Connection information
   host: This defines the ip address of the server hosting our database.
@@ -47,6 +49,42 @@ app.get('/', function(req, res) {
 		my_title:"Login Page"
 	});
 });
+
+app.post('/auth', function(request, response) {
+	var username = request.body.username;
+	var password = request.body.password;
+	var posts = 'select * from posts;'; //we want to load up all the posts for the user once they get to 
+
+	var query = 'SELECT * FROM user_table WHERE username =\''+username+'\' AND password_ =\''+password+'\';';
+	if (username && password) {
+		db.task('get-everything', task => {
+			return task.batch([
+				task.any(query),
+				task.any(posts)
+			]);
+		})
+			.then( info => {
+				response.render('pages/home',{
+					my_title: "Home Page",
+					posts: info[1] //info[1] is the posts, 0 is the query
+				})
+			})
+			.catch(function (err) {
+				console.log("THIS MUST MEAN THAT THIS QUERY WAS INVALID");
+				console.log('error', err);
+				response.render('pages/login', {
+					my_title: 'Home Page',
+					data: ''
+				})
+			});       
+
+	} else {
+		response.send('Please enter Username and Password!');
+		response.end();
+	}
+	 
+});
+
 
 app.get('/reset', function(req, res) {
 	res.render('pages/reset', {
@@ -123,46 +161,6 @@ app.get('/index', function(req, res) {
 	res.render('pages/index',{
 		my_title:"Email Page"
 	});
-});
-
-app.get('/login/login_', function(req, res) {
-	
-	var userin = req.body.username;
-	var passin = req.body.password;
-	//var sqluser = 'select username from user_table where username=\''+userin+'\';';
-	var sqlcreds = 'select * from user_table where password_=\''+passin+'\' and username=\''+userin+'\';';
-	var found = task.any(sqlcreds);
-	
-	if (found)
-	{
-	db.task('get-credentials', task => {
-        return task.batch([
-            task.any(sqlcreds),
-        ]);
-    })
-    
-	.then(info => {
-    	res.render('pages/home',{
-				my_title: "Home Page",
-				data: info[0],
-			})
-    })
-
-    .catch(err => {
-            console.log('Unable to find User', err);
-            res.render('pages/login', {
-                my_title: 'Login Page',
-                data: '',
-            })
-    });
-	}
-
-	else
-	{
-		console.log('Unable to find User', err);
-		res.render('pages/login');
-	}
-
 });
 
 app.post('/register/add_user',function(req,res){
