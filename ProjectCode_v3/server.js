@@ -180,6 +180,23 @@ app.get('/profile', function(req, res) {
     });
 });
 
+//visiting profile page ZC
+app.get('/visiting_profile', function(req, res) {
+	var profiles =  'select * from user_table;';
+	db.task('get-everything', task => {
+        	return task.batch([
+            		task.any(profiles),
+        	]);
+    	})
+	.then(info => {
+                console.log(info[0]);
+	res.render('pages/visiting_profile',{
+		my_title:"Visiting Profile Page",
+		data: info[0]
+	})
+    });
+});
+
 //settings page
 app.get('/settings', function(req, res) {
 	var profiles =  'select * from user_table;';
@@ -203,6 +220,33 @@ app.get('/index', function(req, res) {
 		my_title:"Email Page"
 	});
 });
+
+//ZC
+app.get('/visiting_profile', function(req, res) { //this loads up all the pages
+	var query = 'SELECT * FROM user_table WHERE full_name =\''+full_name+'\';';
+	var full_name = request.body.full_name;
+
+    db.task('get-everything', task => {
+        return task.batch([
+            task.any(query)
+        ]);
+    })
+        .then( info => {
+			console.log(info[0]);
+            res.render('pages/visiting_profile',{
+                my_title: "Visiting Profile Page",
+                full_name: info[0] //info[0][0] is the first post 
+            })
+        })
+        .catch(function (err) {
+            console.log('error', err);
+            res.render('pages/home', {
+                my_title: 'Home Page',
+                data: ''
+            })
+        });       
+});
+
 
 app.post('/register/add_user',function(req,res){
 
@@ -247,7 +291,43 @@ app.post('/register/add_user',function(req,res){
 
 });
 
+app.post('/settings/change_settings',function(req,res){
 
+	var full_name = req.body.full_name;
+	var user_name = req.body.user_name;
+	var past_user = data[1].username;
+	var password_ = req.body.password_;
+	var major_ = req.body.major_;
+	var year_ = req.body.year_;
+	var gpa_ = req.body.gpa_;
+	var experience_= req.body.experience_;
+	var skills_= req.body.skills_;
+
+	var update_statement = "UPDATE user_table SET full_name = "+full_name+", username = "+user_name+", password_ = "+password_+", major = "+major_+", gpa = "+gpa_+", year = "+year_+", experience = "+experience_+", skills = "+skills_+" WHERE username = past_user"
+	
+	db.task('post-data', task => {
+        return task.batch([
+            task.any(update_statement),
+        ]);
+    })
+	
+    .then(data => {
+		res.render('pages/home',{
+			my_title:"Settings",
+			profiles: data[1],
+		})
+	})
+	
+    .catch(err => {
+		console.log('Uh Oh I made an oopsie');
+		req.flash('Error', err);
+		res.render('/home',{
+			my_title: "Settings",
+			profiles: '',
+		})
+	});
+
+});
 
 app.listen(3000);
 console.log('3000 is the magic port');

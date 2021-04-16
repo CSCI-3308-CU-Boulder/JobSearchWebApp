@@ -1,0 +1,91 @@
+<%- include('../partials/header') %>
+<%- include('../partials/menu') %>
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="websiteStylesheet.css">
+<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+<script src="profile.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="../resources/css/websiteStylesheet.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<style>
+body {
+  text-align:center;
+  height: auto;
+  margin: auto;
+  font: 400 15px/1.8 "Lato", sans-serif;
+  color: #777;
+  background: #FFFFFA;
+}
+.card-img-top{
+  position: relative;
+  width: 15rem;
+  height: 15rem;
+  overflow: hidden;
+  border-radius: 50%;
+}
+img {
+  width: 100%;
+  height: auto;
+}
+.row {
+  float:left;
+  margin: auto;
+}
+.col {
+  float:left;
+  width: 100%;
+}
+.darkMode {
+  background-color: #2D2D34;
+  color: #FFFFFA;
+}
+
+</style>
+</head> 
+<!-- <body> -->
+<body>
+<div class= "row">
+<div class="col-3">
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top mx-auto d-block" style="float: center;" src="https://i.pinimg.com/originals/3d/99/a7/3d99a7e6cb285c7f7cf5e87131e45c92.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title"><%- data[1].full_name %></h5>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%- data[1].major %></li>
+        <li class="list-group-item"><%- data[1].year %></li>
+        <li class="list-group-item"><%- data[1].gpa %></li>
+        <li class="list-group-item"><%- data[1].pronouns %></li>
+      </ul>
+      <a class="nav-link" href="/index">Email Message</a>
+    </div>
+  </div> 
+  <div class="card" style="width: 18rem; margin-top: 1rem;">
+    <div class="card-body">
+      <h5 class="card-title">Skills</h5>
+      <p class="card-text"><%- data[1].skills %></p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+  <div class="card" style="width: 50%; margin: 2rem">
+    <div class="card-body">
+      <h5 class="card-title">Experience</h5>
+      <p class="card-text"><%- data[1].experience %></p>
+    </div>
+  </div>
+
+  <%- include('../partials/footer') %>
+
+</body>
