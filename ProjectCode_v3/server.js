@@ -214,22 +214,11 @@ app.get('/settings', function(req, res) {
     });
 });
 
-
 //email index page
 app.get('/index', function(req, res) {
-	var profiles =  'select * from user_table;';
-	db.task('get-everything', task => {
-        	return task.batch([
-            		task.any(profiles),
-        	]);
-    	})
-	.then(info => {
-    	console.log(info[0]);
 	res.render('pages/index',{
 		my_title:"Email Page"
-		data: info[0]
-	})
-    });
+	});
 });
 
 //ZC
