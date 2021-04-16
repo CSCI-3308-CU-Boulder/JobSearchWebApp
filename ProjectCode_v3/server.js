@@ -312,7 +312,7 @@ app.post('/settings/change_settings',function(req,res){
     })
 	
     .then(data => {
-		res.render('pages/settings',{
+		res.render('pages/home',{
 			my_title:"Settings",
 			profiles: data[1],
 		})
@@ -321,7 +321,7 @@ app.post('/settings/change_settings',function(req,res){
     .catch(err => {
 		console.log('Uh Oh I made an oopsie');
 		req.flash('Error', err);
-		res.render('/settings',{
+		res.render('/home',{
 			my_title: "Settings",
 			profiles: '',
 		})
