@@ -226,7 +226,7 @@ app.get('/index', function(req, res) {
 	.then(info => {
     	console.log(info[0]);
 	res.render('pages/index',{
-		my_title:"Email Page"
+		my_title:"Email Page",
 		data: info[0]
 	})
     });

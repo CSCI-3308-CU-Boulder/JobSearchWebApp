@@ -15,17 +15,17 @@ CREATE TABLE IF NOT EXISTS user_table (
 );
 
 INSERT INTO user_table(full_name, username, password_, major, gpa, year, pronouns, experience, skills, question)
-VALUES('Abeal Sileshi', 'abealsileshi', '2020', 'CS', 4.00, 'senior' , 'he/him/his', 'I have some experience.', 'communication skills', 'boulder'),
-('Allison Liu', 'allisonliu', '2020', 'CS&MATH', 4.00, 'junior' , 'she/her', 'I did an internship.', 'public speaking skills', 'chicago'),
-('Brady Murphy', 'bradymurphy', '2020', 'CS', 4.00, 'junior' , 'he/him', 'I have worked many jobs', 'organizational skills', 'newyork'),
-('Isaiah Thomas', 'isaiahthomas', '2020', 'CS', 4.00, 'junior' , 'he/him', 'I have worked many jobs', 'computer skills', 'houston');
+VALUES('Abeal Sileshi', 'abealsileshi@colorado.edu', '2020', 'CS', 4.00, 'senior' , 'he/him/his', 'I have some experience.', 'communication skills', 'boulder'),
+('Allison Liu', 'allisonliu@colorado.edu', '2020', 'CS&MATH', 4.00, 'junior' , 'she/her', 'I did an internship.', 'public speaking skills', 'chicago'),
+('Brady Murphy', 'brady.murphy@colorado.edu', '2020', 'CS', 4.00, 'junior' , 'he/him', 'I have worked many jobs', 'organizational skills', 'newyork'),
+('Isaiah Thomas', 'isaiahthomas@colorado.edu', '2020', 'CS', 4.00, 'junior' , 'he/him', 'I have worked many jobs', 'computer skills', 'houston');
 
 DROP TABLE IF EXISTS posts;
 
 CREATE TABLE IF NOT EXISTS posts(
   post_text VARCHAR(500) NOT NULL,
   post_id SERIAL NOT NULL,
-  username_posts VARCHAR(30) REFERENCES user_table (username),
+  username_posts VARCHAR(30),
 
   PRIMARY KEY(post_id) 
 );
