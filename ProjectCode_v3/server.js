@@ -295,6 +295,7 @@ app.post('/settings/change_settings',function(req,res){
 
 	var full_name = req.body.full_name;
 	var user_name = req.body.user_name;
+	var past_user = data[1].username;
 	var password_ = req.body.password_;
 	var major_ = req.body.major_;
 	var year_ = req.body.year_;
@@ -302,7 +303,7 @@ app.post('/settings/change_settings',function(req,res){
 	var experience_= req.body.experience_;
 	var skills_= req.body.skills_;
 
-	var update_statement = "UPDATE user_table SET full_name = "+full_name+", username = "+user_name+", password_ = "+password_+", major = "+major_+", gpa = "+gpa_+", year = "+year_+", experience = "+experience_+", skills = "+skills_+""
+	var update_statement = "UPDATE user_table SET full_name = "+full_name+", username = "+user_name+", password_ = "+password_+", major = "+major_+", gpa = "+gpa_+", year = "+year_+", experience = "+experience_+", skills = "+skills_+" WHERE username = past_user"
 	
 	db.task('post-data', task => {
         return task.batch([
