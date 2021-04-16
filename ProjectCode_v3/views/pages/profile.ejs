@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
 <%- include('../partials/menu') %>
 
-<head>
+<!-- <head>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="websiteStylesheet.css">
@@ -12,12 +12,12 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <link href="../resources/css/websiteStylesheet.css" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-</head>
+</head> -->
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 
 
-<style>
+<!-- <style>
 body {
   text-align:center;
   height: auto;
@@ -51,11 +51,11 @@ img {
 }
 
 </style>
-</head> 
+</head>  -->
 <!-- <body> -->
-<body>
-<div class= "row">
-<div class="col-3">
+<!-- <body> -->
+<div class="col-3" style="width: 100%">
+  <h1>Profile</h1>
   <div class="card" style="width: 18rem;">
     <img class="card-img-top mx-auto d-block" style="float: center;" src="https://i.pinimg.com/originals/3d/99/a7/3d99a7e6cb285c7f7cf5e87131e45c92.jpg" alt="Card image cap">
     <div class="card-body">
@@ -69,23 +69,24 @@ img {
       <a class="nav-link" href="/index">Email Message</a>
     </div>
   </div> 
-  <div class="card" style="width: 18rem; margin-top: 1rem;">
+</div>
+  <div class="col-5" style="width: 100%; text-align: left; margin-bottom: 10rem;">
+    <br><br>
+  <div class="card" style="width: 100%; margin-top: 1rem;">
     <div class="card-body">
       <h5 class="card-title">Skills</h5>
       <p class="card-text"><%- data[1].skills %></p>
     </div>
   </div>
-</div>
-</div>
+  <br>
 
-
-  <div class="card" style="width: 50%;">
+  <div class="card" style="width: 100%">
     <div class="card-body">
       <h5 class="card-title">Experience</h5>
       <p class="card-text"><%- data[1].experience %></p>
     </div>
   </div>
+</div>
 
-  <%- include('../partials/footer') %>
+<%- include('../partials/footer') %>
 
-</body>
