@@ -291,7 +291,43 @@ app.post('/register/add_user',function(req,res){
 
 });
 
+app.post('/settings/change_settings',function(req,res){
 
+	var full_name = req.body.full_name;
+	var user_name = req.body.user_name;
+	var password_ = req.body.password_;
+	var major_ = req.body.major_;
+	var year_ = req.body.year_;
+	var gpa_ = req.body.gpa_;
+	var experience_= req.body.experience_;
+	var skills_= req.body.skills_;
+
+	var alter_statement = "ALTER TABLE user_table(full_name, username, password_, major, gpa, year, pronouns, experience, skills, question) VALUES('" + full_name + "','" +
+	user_name + "','" + password_ + "','" + major_ + "','" + gpa_ + "','"+ year_ + "','" + experience_ + "','" + skills_ + "') ON CONFLICT DO NOTHING;";
+
+	db.task('post-data', task => {
+        return task.batch([
+            task.any(alter_statement),
+        ]);
+    })
+	
+    .then(data => {
+		res.render('pages/settings',{
+			my_title:"Settings",
+			profiles: data[1],
+		})
+	})
+	
+    .catch(err => {
+		console.log('Uh Oh I made an oopsie');
+		req.flash('Error', err);
+		res.render('/settings',{
+			my_title: "Settings",
+			profiles: '',
+		})
+	});
+
+});
 
 app.listen(3000);
 console.log('3000 is the magic port');
