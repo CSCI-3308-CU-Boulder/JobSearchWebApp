@@ -25,7 +25,81 @@
 	</div>
 	<div class="col-9">
 		
-				<div class="form-group">
+		<form action="/settings/change_settings" method="post" id="change_settings">
+            
+			<div class="form-group row">
+                <label class="col-sm-2 col-form-label"  for="fullName">Full Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="full_name" id="fullName" placeholder="<%- data[1].full_name %>" >
+                </div>
+            </div>
+
+			<div class="form-group row">
+                <label class="col-sm-2 col-form-label"  for="major">Major</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="major_" id="major" placeholder="<%- data[1].major %>" >
+                </div>
+            </div>
+
+			<div class="form-group row">
+                <label class="col-sm-2 col-form-label"  for="gpa">GPA</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="gpa_" id="gpa" placeholder="<%- data[1].gpa%>" >
+                </div>
+            </div>
+
+			<div class="form-group row">
+                <label class="col-sm-2 col-form-label"  for="year">Year</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="year_" id="year" placeholder="<%- data[1].year %>" >
+                </div>
+            </div>
+
+			<div class="form-group row">
+                <label class="col-sm-2 col-form-label"  for="userName">Username</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="user_name" id="username" placeholder="<%- data[1].username %>" >
+                </div>
+            </div>
+			
+			<div class="form-group row">
+                <label class="col-sm-2 col-form-label"  for="password">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" name="password_" id="password" placeholder="<%- data[1].password_ %>">
+                </div>
+            </div>
+
+			<div class="form-group row">
+                <label class="col-sm-2 col-form-label"  for="skills">Skills</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="skills_" id="skills" placeholder="<%- data[1].skills %>">
+                </div>
+            </div>
+			
+			<div class="form-group row">
+                <label class="col-sm-2 col-form-label"  for="fullName">Experience</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="experience_" id="experience" placeholder="<%- data[1].experience %>">
+                </div>
+            </div>
+
+			<div class="row mt-5">
+
+				<div class="col">
+					<input type="Save" value="Save"  class="btn btn-primary btn-block">
+				</div>
+
+					
+				<div class="col">
+					<button class="btn btn-default btn-block" onclick="cancel()" style="background-color:#989898;">Cancel</button>
+				</div>
+				
+			</div>
+
+		</form>
+		
+		
+			<!-- <div class="form-group">
 					<label>Name</label>
 					<input class="form-control" name="full_name" id="name" placeholder="<%- data[1].full_name %>">
 				</div>
@@ -63,9 +137,9 @@
 				<div class="form-group">
 					<label>Experience</label>
 					<input class="form-control" id="experience" style="height:200px;" placeholder="<%- data[1].experience %>">
-				</div>
+				</div> -->
 								
-				<div class="row mt-5">
+				<!-- <div class="row mt-5">
 
 					
 					<div class="col">
@@ -82,7 +156,7 @@
 				<br>
 				<center>
 				<button type="button" id ="delete" class="btn btn-block" onclick="delete_profile()" style="background-color:red; width:150px;">Delete profile</button>
-				</center>
+				</center> -->
 	</div>
 </div>
 </div>
