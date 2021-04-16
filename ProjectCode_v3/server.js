@@ -302,12 +302,11 @@ app.post('/settings/change_settings',function(req,res){
 	var experience_= req.body.experience_;
 	var skills_= req.body.skills_;
 
-	var alter_statement = "ALTER TABLE user_table(full_name, username, password_, major, gpa, year, pronouns, experience, skills, question) VALUES('" + full_name + "','" +
-	user_name + "','" + password_ + "','" + major_ + "','" + gpa_ + "','"+ year_ + "','" + experience_ + "','" + skills_ + "') ON CONFLICT DO NOTHING;";
-
+	var update_statement = "UPDATE user_table SET full_name = "+full_name+", username = "+user_name+", password_ = "+password_+", major = "+major_+", gpa = "+gpa_+", year = "+year_+", experience = "+experience_+", skills = "+skills_+""
+	
 	db.task('post-data', task => {
         return task.batch([
-            task.any(alter_statement),
+            task.any(update_statement),
         ]);
     })
 	
