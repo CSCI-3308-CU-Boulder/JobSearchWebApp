@@ -217,8 +217,15 @@ app.get('/settings', function(req, res) {
 //email index page
 app.get('/index', function(req, res) {
 	res.render('pages/index',{
+<<<<<<< HEAD
 		my_title:"Email Page"
 	});
+=======
+		my_title:"Email Page",
+		data: info[0]
+	})
+    });
+>>>>>>> 0c17d874ef49dec490b9f5b37251de6fcb2d9f53
 });
 
 //ZC
