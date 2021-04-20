@@ -14,4 +14,5 @@
 <p> Our source code is in ProjectCode_v3 (v3 stands for version 3)<p>
 <p> To test, docker must be installed. Run the command "docker-compose up -d", which should install all dependencies and get the site hosted on localhost:3000 <p>
 <p> Register first, then login with your new account. <p>
-
+<p> Register with an email address as your username <p>
+<p> In order for the email API to work, your email must be approved prior by Zoe Cruse <p>
